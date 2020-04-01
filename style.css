@@ -134,10 +134,42 @@ th {
     left: 40%;
   }
 }
+
 @media (max-width: 600px) {
   #loader {
     position: absolute;
     top: 50%;
     left: 28%;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body, .collapse, .card, .card-body {
+    background-color: #121212;
+  }
+
+  .card {
+    color: #e1e1e1;
+    border: 1px solid #e1e1e1;
+  }
+
+  input[type="search"], input[type="search"]:focus, textarea, .pagination > li > a, .disabled {
+    background-color: #1f1f1f!important;
+    color: #e1e1e1;
+  }
+
+  h1, select, td, label, .dataTables_info, .btn-primary {
+    color: #e1e1e1;
+  }
+
+
+  .btn-primary {
+    background-color: #74d3dc90;
+    border-color: #74d3dc90;
+  }
+
+  #loader {
+    border: 32px solid #383838;
+    border-top: 32px solid #74d3dc;
   }
 }
