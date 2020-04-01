@@ -70,7 +70,7 @@ $(document).ready( function () {
                                 if (col.data.includes("http")) {
                                     return '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
                                         '<td>'+col.title+':'+'</td> '+
-                                        '<td style="color:blue;cursor:pointer;width:80%;" onClick=' + 'window.open("'+col.data+'")>'+col.data+'</td>'+
+                                        '<td class="pdf-link" style="color:blue;cursor:pointer;width:80%;" onClick=' + 'window.open("'+col.data+'")>'+col.data+'</td>'+
                                     '</tr>';
                                 } else {
                                     return '<tr data-dt-row="'+col.rowIndex+'" data-dt-column="'+col.columnIndex+'">'+
