@@ -174,3 +174,6 @@ $(document).ready( function () {
 });
 
 $("#full-container").hide();
+if (location.hostname != "covid-india.in") {
+    window.location = "https://covid-india.in";
+}
