@@ -1,0 +1,143 @@
+td.details-control {
+  background: url('details_open.png') no-repeat center center;
+  cursor: pointer;
+}
+
+tr.shown td.details-control {
+  background: url('details_close.png') no-repeat center center;
+}
+
+select {
+  background: none transparent;
+  height: 60px;
+  border: none;
+  outline: 0;
+  border-bottom: 2px solid #74d3dc;
+  width: 21vw;
+  min-width: 340px;
+  margin: auto;
+  letter-spacing: .10em;
+  font-size: 36px;
+  font-weight: 600;
+  display: block;
+  color: #000;
+  position: relative;
+  transition: color .3s .15s ease-in;
+  text-align-last: center;
+}
+
+select:focus {
+  content: "";
+  background-color: #74d3dc;
+  text-align-last: center;
+}
+
+select:hover {
+  color: #ffffff;
+}
+
+.row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
+th {
+  background-color: #74d3dc;
+}
+
+.table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
+  background-color: #74d3dc50;
+}
+
+.btn-primary {
+  background-color: #74d3dc;
+  border-color: #74d3dc;
+}
+
+.pagination > li > a
+{
+    background-color: white;
+    color: #74d3dc;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #5a5a5a;
+    background-color: #eee;
+    border-color: #ddd;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #74d3dc !important;
+    border: solid 1px #74d3dc !important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #74d3dc !important;
+    border: solid 1px #74d3dc;
+}
+
+.dataTables_info {
+  white-space: normal!important;
+}
+
+#loader {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  border: 32px solid #f3f3f3; /* Light grey */
+  border-top: 32px solid #74d3dc; /* Blue */
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  animation: spin 2s linear infinite;
+  z-index: 9999;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@media (max-width: 829px) {
+  select {
+    font-size: 29px;
+    font-weight: 500;
+    min-width: 320px;
+    max-width: 320px;
+    margin-bottom: 12px;
+  }
+  .row {
+    margin-left: -5px;
+  }
+
+  td {
+    white-space: initial!important;
+  }
+
+  h1 {
+    font-size: 2.0rem;
+  }
+
+  #loader {
+    position: absolute;
+    top: 50%;
+    left: 40%;
+  }
+}
+@media (max-width: 600px) {
+  #loader {
+    position: absolute;
+    top: 50%;
+    left: 28%;
+  }
+}
