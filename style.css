@@ -7,6 +7,16 @@ tr.shown td.details-control {
   background: url('details_close.png') no-repeat center center;
 }
 
+.pdf-link {
+  color: #007bff;
+  cursor: pointer;
+  width: 80%;
+}
+.pdf-link:hover {
+  color: #0068d8;
+  text-decoration: underline;
+}
+
 select {
   background: none transparent;
   height: 40px;
