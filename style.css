@@ -154,14 +154,13 @@ th {
   }
 
   input[type="search"], input[type="search"]:focus, textarea, .pagination > li > a, .disabled {
-    background-color: #1f1f1f!important;
+    background-color: #2c2c2c!important;
     color: #e1e1e1;
   }
 
   h1, select, td, label, .dataTables_info, .btn-primary {
     color: #e1e1e1;
   }
-
 
   .btn-primary {
     background-color: #74d3dc90;
