@@ -12,6 +12,7 @@ tr.shown td.details-control {
   cursor: pointer;
   width: 80%;
 }
+
 .pdf-link:hover {
   color: #0068d8;
   text-decoration: underline;
@@ -180,5 +181,40 @@ th {
   #loader {
     border: 32px solid #383838;
     border-top: 32px solid #74d3dc;
+  }
+}
+
+.full {
+  display: none;
+}
+
+@media print {
+
+  #full-container {
+    display: none;
+  }
+
+  .full {
+    display: block;
+  }
+
+  h1 {
+    color: black;
+  }
+
+  table {
+    page-break-inside: auto
+  }
+
+  tr {
+    page-break-inside: auto;
+    page-break-after: avoid;
+  }
+
+  td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    color: black;
   }
 }

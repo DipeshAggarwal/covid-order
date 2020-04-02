@@ -3,8 +3,8 @@ $(document).ready( function () {
     var sheetName;
     var pageLength = 15;
     var queryArray = [""];
-    const urlParams = new URLSearchParams(window.location.search);
     var columnBreakpoints = [ "meddesktop", "tabletp", "mobilel", "mobilep" ];
+    const urlParams = new URLSearchParams(window.location.search);
 
     // Check if a custom sheet query is provided
     if ( urlParams.get("sheet") ) {
@@ -32,11 +32,11 @@ $(document).ready( function () {
         key: sheetID
     })
     .then(function(data, tabletop) { 
-        const columnNames = data[sheetName].columnNames;
+        columnNames = data[sheetName].columnNames;
         
-        sheetData = data[sheetName].elements;
-        columnObj = [{"orderable": false,"data": null,"defaultContent": ''}];
-        columnDefs = [{ "width": "5%", "targets": 0 }];
+        var sheetData = data[sheetName].elements;
+        var columnObj = [{"orderable": false, "data": null, "defaultContent": ''}];
+        var columnDefs = [{ "width": "5%", "targets": 0 }];
 
         // Here we separate the data column wise to feed to DataTable
         for (var i = 0; i < columnNames.length; i++) {
@@ -53,10 +53,12 @@ $(document).ready( function () {
                 $("#firstRow").append('<th class="' + columnBreakpoints.join(' ') + '">' + columnNames[i] +'</th>');
                 columnBreakpoints.pop();
             } else {
-                $("#firstRow").append('<th class="none">' + columnNames[i] +"</th>");
+                $("#firstRow").append('<th class="none">' + columnNames[i] + '</th>');
             }
         };
-        columnDefs.push({className: 'control', orderable: false,targets: 0});
+        $("#firstRow").append('<th class="none print-button">Operation</th>');
+        columnObj.push({"orderable": false, "data": null, "defaultContent": '<a href="#" onClick="printOrder();">Print this Order</a>'});
+        columnDefs.push({className: 'control', orderable: false, targets: 0});
 
         var table = $('#orderTable').DataTable({
             "responsive": {
@@ -109,11 +111,11 @@ $(document).ready( function () {
                 {name: 'mobilep', width: 320}
             ],
             "fnCreatedRow": function( nRow, aData, iDataIndex ) {
-                value = aData[columnObj[1].mDataProp].replace(/\s+/g,' ').replace(/'/g, "\\'").trim();
+                var value = aData[columnObj[1].mDataProp].replace(/\s+/g,' ').replace(/'/g, "\\'").trim();
                 if ( $("#state-box option[value='" + value + "']").length == 0 ) {
                     $('<option/>').val(value).html(value).appendTo('#state-box');
                 };
-                dataArray = aData[columnObj[2].mDataProp].replace(/\s+/g,' ').replace(/'/g, "\\'").trim().split(",");
+                var dataArray = aData[columnObj[2].mDataProp].replace(/\s+/g,' ').replace(/'/g, "\\'").trim().split(",");
                 dataArray.forEach(function(entry) {
                     if ( $("#issue-box option[value='" + entry.trim() + "']").length == 0 ) {
                         $('<option/>').val(entry.trim()).html(entry.trim()).appendTo('#issue-box');
@@ -151,8 +153,8 @@ $(document).ready( function () {
 
         for (var key of urlParams.keys()) {
             if (queryArray.includes(key)) {
-                index = queryArray.indexOf(key);
-                value = urlParams.get(key);
+                var index = queryArray.indexOf(key);
+                var value = urlParams.get(key);
 
                 table.column(index).search(value).draw();
 
@@ -160,7 +162,7 @@ $(document).ready( function () {
                     $("#state-box option[value="+value+"]").attr('selected', 'selected');
                 }*/
             } else if ( !(isNaN(key)) ) {
-                index = parseInt(key);
+                var index = parseInt(key);
                 if (key < queryArray.length) {
                     value = urlParams.get(key);
                     table.column(index).search(value).draw();
@@ -173,7 +175,40 @@ $(document).ready( function () {
     })
 });
 
-$("#full-container").hide();
-if (location.hostname === "netlify.com") {
-    window.location = "https://covid-india.in";
+function printOrder() {
+    // Build the printer version
+    var rowData = $(".parent").children();
+    var newEntry = false;
+    var colIndex = 0;
+
+    for (var i=0; i<rowData.length; i++) {
+        if (colIndex === columnNames.length ) {
+            colIndex = 0;
+        }
+
+        if (rowData[i].className === "control sorting_1") {
+            if (newEntry === true) {
+                $("#print-table").append('<tr><td></td><td></td></tr>');
+                $("#print-table").append('<tr><td></td><td> <b>NEW ENTRY</b> </td></tr>');
+                $("#print-table").append('<tr><td></td><td></td></tr>');
+                newEntry = false;
+            }
+            continue;
+        }
+
+        if (rowData[i].innerText === "Print this Order") {
+            newEntry = true;
+            continue;
+        }
+
+        if ( rowData[i].innerText ) {
+            $("#print-table").append('<tr><td><b>' + columnNames[colIndex] + '</b></td><td>' + rowData[i].innerText + '</td></tr>');
+        }
+        colIndex++;
+    };
+
+    // Show the print dialoge box
+    window.print();
+
+    $("#print-table").html('<tr><td style="width:24%;"></td><td></td></tr>');
 }
