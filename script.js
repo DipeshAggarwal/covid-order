@@ -57,7 +57,7 @@ $(document).ready( function () {
             }
         };
         $("#firstRow").append('<th class="none print-button">Operation</th>');
-        columnObj.push({"orderable": false, "data": null, "defaultContent": '<a href="#" onClick="printOrder();">Print this Order</a>'});
+        columnObj.push({"orderable": false, "data": null, "defaultContent": '<a href="#" onClick="printOrder();">Print this Summary</a>'});
         columnDefs.push({className: 'control', orderable: false, targets: 0});
 
         var table = $('#orderTable').DataTable({
@@ -196,7 +196,7 @@ function printOrder() {
             continue;
         }
 
-        if (rowData[i].innerText === "Print this Order") {
+        if (rowData[i].innerText === "Print this Summary") {
             newEntry = true;
             continue;
         }
