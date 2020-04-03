@@ -184,18 +184,18 @@ th {
   }
 }
 
-.full {
+#print-container {
   display: none;
 }
 
 @media print {
 
-  #full-container {
-    display: none;
+  .not-print {
+    display: none!important;
   }
 
-  .full {
-    display: block;
+  .print-this {
+    display: block!important;
   }
 
   h1 {

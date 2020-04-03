@@ -219,11 +219,11 @@ $(document).ready(function () {
       };
 
       $("#loader").hide();
-      $("#full-container").show();
+      $("#main-container").show();
     })
 });
 
-function printOrder() {
+function readyForPrinting() {
   // Build the printer version
   var rowData = $(".parent").children();
   var newEntry = false;
@@ -260,9 +260,37 @@ function printOrder() {
     }
     colIndex++;
   };
+  
+  // Add "not-print" class to main container
+  // This is to ensure that when print of the entire page is taken
+  // it does not come up as blank.
+  $("#main-container").addClass("not-print");
+  $("#print-container").addClass("print-this");
+}
 
-  // Show the print dialoge box
-  window.print();
+function donePrinting() {
+  // Remove all the added classes
+  $("#main-container").removeClass("not-print");
+  $("#print-container").removeClass("print-this");
+
   // Remove all the entries information from thr print table
   $("#print-table").html('<tr><td style="width:24%;"></td><td></td></tr>');
+
 }
+
+function printOrder() {
+  readyForPrinting();
+  window.print();
+  donePrinting();
+}
+
+window.addEventListener('beforeprint', (event) => {
+  // If user has expanded any entries, show the entries print format.
+  if ( $(".parent").length ) {
+    readyForPrinting();
+  }
+});
+
+window.addEventListener('afterprint', (event) => {
+  donePrinting();
+});
