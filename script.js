@@ -224,6 +224,9 @@ $(document).ready(function () {
     })
 });
 
+// A fallback in case the browser does not fire print events at the right time
+var printSetupDone = false;
+
 function readyForPrinting() {
   // Build the printer version
   var rowData = $(".parent").children();
@@ -267,15 +270,22 @@ function readyForPrinting() {
   // it does not come up as blank.
   $("#main-container").addClass("not-print");
   $("#print-container").addClass("print-this");
+  printSetupDone = true;
 }
 
 function donePrinting() {
+  // If this function has already been run or if the `readyForPrinting`
+  // was never run, don't run this.
+  if (printSetupDone === false) {
+    return;
+  }
   // Remove all the added classes
   $("#main-container").removeClass("not-print");
   $("#print-container").removeClass("print-this");
 
   // Remove all the entries information from thr print table
   $("#print-table").html('<tr><td style="width:24%;"></td><td></td></tr>');
+  printSetupDone = false;
 
 }
 
@@ -287,7 +297,10 @@ function printOrder() {
 
 window.addEventListener('beforeprint', (event) => {
   // If user has expanded any entries, show the entries print format.
-  if ( $(".parent").length ) {
+  // For click print job, don't do it as we want to take care of it
+  // ourselves to make sure it happens regardless if the event fires
+  // or not
+  if ( $(".parent").length && printSetupDone === false ) {
     readyForPrinting();
   }
 });
