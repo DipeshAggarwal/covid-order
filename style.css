@@ -190,7 +190,7 @@ th {
 
 @media print {
 
-  .not-print {
+  .not-print, select, .dataTables_filter {
     display: none!important;
   }
 
