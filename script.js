@@ -220,6 +220,7 @@ $(document).ready(function () {
 
       $("#loader").hide();
       $("#main-container").show();
+      $("#printed-from").html('Printed from <a href="">' + window.location.protocol + "//" + window.location.hostname + '</a>')
     })
 });
 
