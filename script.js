@@ -115,6 +115,24 @@ $(document).ready(function () {
         "lengthChange": false,
         "bServerSide": false,
         "bProcessing": true,
+        "dom": 'Bfrtip',
+        "buttons": [
+          {
+            text: 'Expand All',
+            className: "shift-down",
+            attr: {
+              style: "margin-bottom:-50px;"
+            },
+            action: function ( e, dt, node, config ) {
+              if (table.rows('.parent').nodes().to$().find('td:first-child').trigger('click').length === 0) {
+                table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
+                this.text("Collapse All");
+              } else {
+                this.text("Expand All");
+              }
+            }
+          }
+        ],
         "data": sheetData,
         "aoColumns": columnObj,
         "aoColumnDefs": columnDefs,
@@ -200,11 +218,11 @@ $(document).ready(function () {
       }
 
       for (var key of urlParams.keys()) {
-        if (queryArray.includes(key)) {
-          var index = queryArray.indexOf(key);
-          var value = urlParams.get(key);
+            if (queryArray.includes(key)) {
+              var index = queryArray.indexOf(key);
+              var value = urlParams.get(key);
 
-          table.column(index).search(value).draw();
+              table.column(index).search(value).draw();
 
           /*if (key === "state") {
               $("#state-box option[value="+value+"]").attr('selected', 'selected');
@@ -217,6 +235,9 @@ $(document).ready(function () {
           }
         }
       };
+
+      $('#btn-show-all-doc').on('click', function() {
+      });
 
       $("#loader").hide();
       $("#main-container").show();
