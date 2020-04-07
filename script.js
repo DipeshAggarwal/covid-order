@@ -80,6 +80,8 @@ $(document).ready(function () {
         targets: 0
       });
 
+      $("#updated-on").html("The data was last updated on <b>" + new Date(data[sheetName].raw.feed.updated.$t) + "</b>");
+
       var table = $('#orderTable').DataTable({
         "responsive": {
           details: {

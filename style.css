@@ -173,7 +173,7 @@ th {
     color: #e1e1e1;
   }
 
-  h1, select, td, label, .dataTables_info, .btn-primary {
+  h1, select, td, label, .dataTables_info, .btn-primary, #updated-on {
     color: #e1e1e1;
   }
 
