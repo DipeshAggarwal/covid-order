@@ -10,14 +10,14 @@ $(document).ready(function () {
   if (urlParams.get("sheet")) {
     sheetID = urlParams.get("sheet");
   } else {
-    sheetID = "19PBIps8-1k4jEjEv8iRH6DQp1IsVZlYCBwninqSxYNg";
+    sheetID = "1rl7i49pGlUlldXX58ltwSmryKvEfZzKWetuIF8_OvQA";
   };
 
   // Check if a custom worksheet query is provided
   if (urlParams.get("page")) {
     sheetName = urlParams.get("page");
   } else {
-    sheetName = "Sheet1";
+    sheetName = "Orders";
   };
 
   // If a length query is given, show that many entries per page
