@@ -257,3 +257,7 @@ th {
   bottom: 10px!important;
   right: 10px!important;
 }
+
+.card {
+  border: 2px solid #121212;
+}
