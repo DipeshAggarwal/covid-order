@@ -24,7 +24,7 @@
             for (var i=0; i<sheetData.length; i++) {
               var initial = sheetData[i]["Name"].match(/\b(\w)/g).join('')
               var twitterLink = "https://twitter.com/" + sheetData[i]["Twitter"]
-              var fragmentOne = '<div class="card w-100"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text" style="margin-bottom:20px;">'+ sheetData[i]["Description"];
+              var fragmentOne = '<div class="card w-100"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text" style="margin-bottom:23px;">'+ sheetData[i]["Description"];
 
               if (sheetData[i]["Twitter"]) {
                 var fragmentSecond = '</p><a href="' + twitterLink + '" target="_blank" class="btn btn-outline-primary about-button fa fa-twitter"> ' + sheetData[i]["Twitter"] + '</a>';
