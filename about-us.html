@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - COVID-19 Relief Measure Order Tracker</title>
+    
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NCCGLW8');</script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tabletop@1.6.2/src/tabletop.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        Tabletop.init({
+          key: "1uOv6eNYW1Ope4rCVD0vIp1Nuq6XSWa-TaHRQedUle34"
+        })
+          .then(function(data, tabletop) {
+            var sheetData = data["Sheet1"].elements;
+              
+            for (var i=0; i<sheetData.length; i++) {
+              var initial = sheetData[i]["Name"].match(/\b(\w)/g).join('')
+              var twitterLink = "https://twitter.com/" + sheetData[i]["Twitter"]
+              var fragmentOne = '<div class="col-md-6"><div class="card" style="min-height:22vh;"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h2 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text">'+ sheetData[i]["Description"];
+
+              if (sheetData[i]["Twitter"]) {
+                var fragmentSecond = '</p><a href="' + twitterLink + '" target="_blank" class="btn btn-outline-primary about-button fa fa-twitter"> ' + sheetData[i]["Twitter"] + '</a>';
+                } else {
+                  var fragmentSecond = '</p></div></div></div>';
+                }
+                $("#about-grid").append(fragmentOne + fragmentSecond);
+              }
+              $("#loader").hide();
+          })
+      })
+    </script>
+  </head>
+
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCCGLW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <div id="loader"></div>
+    <div class="row">
+      <div class="col">
+        <h1 style="margin:auto;text-align:center;padding-bottom:20px;">About the Volunteers</h1>
+      </div>
+    </div>
+    <div id="about-grid" class="row"></div>
+
+    <p style="margin:auto;text-align:center;padding-top:30px;">
+      <a class="btn btn-primary" data-toggle="collapse" href="#contact" role="button" aria-expanded="false" aria-controls="contact" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Contact Us</a>
+      <a class="btn btn-primary" data-toggle="collapse" href="#disclaimer" role="button" aria-expanded="false" aria-controls="disclaimer" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Disclaimer</a>
+    </p>
+
+    <div class="collapse" id="contact">
+      <div class="card card-body">
+        <div style="margin:auto;text-align:center;">While utmost care has been taken while uploading the orders/circulars/notifications/notices as issued by the various State and Central Govt.’s from time to time in relation to COVID-19, however, we are extremely sorry for any discrepancy found therein. If you find any discrepancy, issue, wish to report any anomaly, or send any additional information that may be added here, kindly send the information, suggestions and grievances to <a href="mailto:legal.cso@gmail.com" target="_top">legal.cso@gmail.com</a>.
+
+        <br />
+        <br />
+
+        Or contact us on twitter at: <a href="https://twitter.com/COVIDIndiaTrack/" target="_blank">@COVIDIndiaTrack</a><br />
+        <a href="https://twitter.com/jeevika_shiv/" target="_blank">Jeevika Shiv (@jeevika_shiv)</a> | <a href="https://twitter.com/AninditaAdhik13/" target="_blank">Anindita Adhikari (@AninditaAdhik13)</a> | <a href="https://twitter.com/ity_adi" target="_blank">Aditya Shrivastava (@ity_adi)</a>
+
+        <br />
+        <br />
+
+        This website is developed and maintained by <a href="https://github.com/DipeshAggarwal">Dipesh Aggarwal</a> | <a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a></div>
+      </div>
+    </div>
+
+      <div class="collapse" id="disclaimer">
+        <div class="card card-body">
+          <div style="margin:auto;text-align:center;">This web portal only lists the various Government orders/notifications/circulars/notices, issued by various State Govt.’s and Central Govt. issued from time to time in relation to  COVID-19 and is hosted here only for purposes of general public awareness, information and research. The web portal does not undertake any responsibility of the correctness or truthfulness of the contents of these govt. orders. Visitors are advised to visit the respective official govt. department to verify the information provided in such orders/notifications/circulars/notices.</div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
