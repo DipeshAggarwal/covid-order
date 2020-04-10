@@ -150,6 +150,11 @@ th {
   }
 }
 
+.btn-primary {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
 @media (max-width: 600px) {
   #loader {
     position: absolute;
