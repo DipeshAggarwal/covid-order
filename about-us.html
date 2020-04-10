@@ -24,10 +24,10 @@
             for (var i=0; i<sheetData.length; i++) {
               var initial = sheetData[i]["Name"].match(/\b(\w)/g).join('')
               var twitterLink = "https://twitter.com/" + sheetData[i]["Twitter"]
-              var fragmentOne = '<div class="card w-100"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text">'+ sheetData[i]["Description"];
+              var fragmentOne = '<div class="card w-100"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text" style="margin-bottom:5px;">'+ sheetData[i]["Description"];
 
               if (sheetData[i]["Twitter"]) {
-                var fragmentSecond = '</p><br /><a href="' + twitterLink + '" target="_blank" class="btn btn-outline-primary about-button fa fa-twitter"> ' + sheetData[i]["Twitter"] + '</a>';
+                var fragmentSecond = '</p><a href="' + twitterLink + '" target="_blank" class="btn btn-outline-primary about-button fa fa-twitter"> ' + sheetData[i]["Twitter"] + '</a>';
                 } else {
                   var fragmentSecond = '</p></div></div>';
                 }
@@ -44,13 +44,14 @@
     <div id="loader"></div>
     <div class="row">
       <div class="col">
-        <h1 style="margin:auto;text-align:center;padding-bottom:20px;">About the Contributors</h1>
+        <h1 style="margin:auto;text-align:center;padding-top:20px;padding-bottom:20px;">About the Contributors</h1>
       </div>
     </div>
     <div id="about-grid" class="row" style="margin:20px;"></div>
 
     <p style="margin:auto;text-align:center;padding-top:30px;">
       <a class="btn btn-primary" data-toggle="collapse" href="#contact" role="button" aria-expanded="false" aria-controls="contact" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Contact Us</a>
+      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with Us</a>
       <a class="btn btn-primary" data-toggle="collapse" href="#disclaimer" role="button" aria-expanded="false" aria-controls="disclaimer" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Disclaimer</a>
     </p>
 
