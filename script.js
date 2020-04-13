@@ -33,7 +33,6 @@ $(document).ready(function () {
     })
     .then(function (data, tabletop) {
       columnNames = data[sheetName].columnNames;
-      console.log(data[sheetName]);
 
       var sheetData = data[sheetName].elements;
       var columnObj = [{
@@ -92,13 +91,19 @@ $(document).ready(function () {
         "data": null,
         "defaultContent": '<a href="#" onClick="printOrder();">Print selected summaries</a>'
       });
+      $("#firstRow").append('<th class="none print-button">Operation</th>');
+      columnObj.push({
+        "orderable": false,
+        "data": null,
+        "defaultContent": '<a href="#" download="exported.csv" onClick="downloadOrderAsCSV(this);">Download selected summaries as CSV</a>'
+      });
       columnDefs.push({
         className: 'control',
         orderable: false,
         targets: 0
       });
 
-      $("#updated-on").html("The data was last updated on <b>" + new Date(data[sheetName].raw.feed.updated.$t) + "</b>");
+      //$("#updated-on").html("The data was last updated on <b>" + new Date(data[sheetName].raw.feed.updated.$t) + "</b>");
 
       var table = $('#orderTable').DataTable({
         "responsive": {
@@ -268,6 +273,49 @@ $(document).ready(function () {
 // A fallback in case the browser does not fire print events at the right time
 var printSetupDone = false;
 
+function prepareForCSV() {
+  var dataCSV = [];
+  var rowData = $(".parent").children();
+  var rowDataCSV = [];
+  dataCSV.push(columnNames);
+
+  for (var i = 0; i < rowData.length; i++) {
+    if (rowData[i].className === "control sorting_1" || rowData[i].innerText === "Download selected summaries as CSV") {
+      continue;
+    }
+
+    if (rowData[i].innerText === "Print selected summaries") {
+      dataCSV.push(rowDataCSV.join(","));
+      rowDataCSV = [];
+      continue;
+    }
+
+    text = rowData[i].innerText.replace(/^[ ]+|[ ]+$/g, '');
+    if (text.includes(",") || text.includes(";")) {
+      rowDataCSV.push(text.replace(/\n/g, ' ; ').replace(/(.*)/g, '\"$1\"')); 
+    } else {
+      rowDataCSV.push(text);
+    }
+  }
+  return dataCSV.join("\n");
+}
+
+function downloadOrderAsCSV(link) {
+  var dataCSV = prepareForCSV();
+  var blob = new Blob([dataCSV], {
+    type: 'text/csv;charset=utf-8;'
+  });
+
+  var url = URL.createObjectURL(blob);
+  var link = document.createElement("a");
+  link.href = url;
+  link.download = "exported.csv";
+  link.style.visibility = 'hidden';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
 function readyForPrinting() {
   // Build the printer version
   var rowData = $(".parent").children();
@@ -294,8 +342,11 @@ function readyForPrinting() {
       continue;
     }
 
-    // Stops the print column from being printed.
     if (rowData[i].innerText === "Print selected summaries") {
+      continue;
+    }
+    // Stops the print column from being printed.
+    if (rowData[i].innerText === "Download selected summaries as CSV") {
       newEntry = true;
       continue;
     }
