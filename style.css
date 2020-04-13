@@ -158,6 +158,10 @@ th {
     margin-bottom: 20px;
     text-align: justify;
   }
+
+  .display-1, .display-2 {
+    font-size: 4em;
+  }
 }
 
 .btn-primary {
