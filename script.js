@@ -95,7 +95,7 @@ $(document).ready(function () {
       columnObj.push({
         "orderable": false,
         "data": null,
-        "defaultContent": '<a href="#" download="exported.csv" onClick="downloadOrderAsCSV(this);">Download selected summaries as CSV</a>'
+        "defaultContent": '<a href="#" onClick="downloadOrderAsCSV(this);">Download selected summaries as CSV</a>'
       });
       columnDefs.push({
         className: 'control',
@@ -307,13 +307,9 @@ function downloadOrderAsCSV(link) {
   });
 
   var url = URL.createObjectURL(blob);
-  var link = document.createElement("a");
-  link.href = url;
-  link.download = "exported.csv";
-  link.style.visibility = 'hidden';
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  var a = link;
+  a.download = "exported.csv";
+  a.href = url;
 }
 
 function readyForPrinting() {
