@@ -54,9 +54,14 @@ $(document).ready(function () {
 
         // The first five columns are given fixed width
         if (i < 6) {
-          if (i % 2 === 1) {
+          if (i === 3 || i === 5) {
             columnDefs.push({
               "width": "10%",
+              "targets": i
+            });
+          } else if ( i === 1) {
+            columnDefs.push({
+              "width": "20%",
               "targets": i
             });
           } else if ( i === 2) {
