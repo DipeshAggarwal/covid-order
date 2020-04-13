@@ -216,6 +216,9 @@ th {
 }
 
 @media print {
+  body {
+    background-color: #ffffff;
+  }
   .not-print, select, .dataTables_filter {
     display: none!important;
   }
