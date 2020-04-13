@@ -115,6 +115,13 @@ th {
   100% { transform: rotate(360deg); }
 }
 
+.about-text {
+  margin-left: 150px;
+  margin-right: 150px;
+  margin-bottom: 50px;
+  text-align: justify;
+}
+
 @media (max-width: 765px) {
   select {
     font-size: 20px;
@@ -143,6 +150,13 @@ th {
 
   .shift-down {
     margin: auto!important;
+  }
+
+  .about-text {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    text-align: justify;
   }
 }
 
@@ -174,7 +188,7 @@ th {
     color: #e1e1e1;
   }
 
-  h1, select, td, label, .dataTables_info, .btn-primary, #updated-on {
+  h1, select, td, label, .dataTables_info, .btn-primary, #updated-on, .about-text {
     color: #e1e1e1;
   }
 

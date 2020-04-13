@@ -3,7 +3,7 @@ $(document).ready(function () {
   var sheetName;
   var pageLength = 15;
   var queryArray = [""];
-  var columnBreakpoints = ["meddesktop", "tabletp", "mobilel", "mobilep"];
+  var columnBreakpoints = ["meddesktop", "meddesktop", "tabletp", "mobilel", "mobilep"];
   const urlParams = new URLSearchParams(window.location.search);
 
   // Check if a custom sheet query is provided
@@ -33,6 +33,7 @@ $(document).ready(function () {
     })
     .then(function (data, tabletop) {
       columnNames = data[sheetName].columnNames;
+      console.log(data[sheetName]);
 
       var sheetData = data[sheetName].elements;
       var columnObj = [{
@@ -52,11 +53,23 @@ $(document).ready(function () {
         });
 
         // The first five columns are given fixed width
-        if (i < 5) {
-          columnDefs.push({
-            "width": "20%",
-            "targets": i
-          });
+        if (i < 6) {
+          if (i % 2 === 1) {
+            columnDefs.push({
+              "width": "10%",
+              "targets": i
+            });
+          } else if ( i === 2) {
+            columnDefs.push({
+              "width": "20%",
+              "targets": i
+            });
+          } else {
+            columnDefs.push({
+              "width": "35%",
+              "targets": i
+            });
+          }
         };
 
         // Add responsive breakpoints to the first four columns

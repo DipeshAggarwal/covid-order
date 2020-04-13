@@ -15,6 +15,7 @@
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
     <script>
       $(document).ready(function() {
+        $("#hide-until-load").hide()
         Tabletop.init({
           key: "1uOv6eNYW1Ope4rCVD0vIp1Nuq6XSWa-TaHRQedUle34"
         })
@@ -34,43 +35,57 @@
                 $("#about-grid").append(fragmentOne + fragmentSecond);
               }
               $("#loader").hide();
+              $("#hide-until-load").show()
           })
-      })
+      })      
     </script>
   </head>
 
   <body>
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCCGLW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="loader"></div>
-    <div class="row">
-      <div class="col">
-        <h1 style="margin:auto;text-align:center;padding-top:20px;padding-bottom:20px;">About the Contributors</h1>
+
+    <div id="hide-until-load">
+      <div class="row">
+        <div class="col">
+          <h1 class="display-1" style="margin:auto;text-align:center;padding-top:20px;padding-bottom:40px;">About Us</h1>
+        </div>
       </div>
-    </div>
-    <div id="about-grid" class="row" style="margin:20px;"></div>
 
-    <p style="margin:auto;text-align:center;padding-top:30px;">
-      <a class="btn btn-primary" data-toggle="collapse" href="#contact" role="button" aria-expanded="false" aria-controls="contact" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Contact Us</a>
-      <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with Us</a>
-      <a class="btn btn-primary" data-toggle="collapse" href="#disclaimer" role="button" aria-expanded="false" aria-controls="disclaimer" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Disclaimer</a>
-    </p>
+      <div class="about-text lead blockquote">We are a group of activists, researchers, lawyers and students who came together to collectively track the rapidly evolving situation after the nation-wide lockdown was announced in light of COVID-19 outbreak.<br />
+      The central government, state governments and courts responded to the fallout effect of this lockdown by announcing different social security measures to cushion its impact on the population, particularly focusing on the most vulnerable, poor, migrants, under-trials etc.<br />
+      Our objective has been to make these orders available with a user friendly interface and summaries. We hope that the information will be useful for the public at large, civil society organisations, journalists, activists, social movements and researchers to ensure that these measures are accessible to those in need and to track implementation to hold respective governments accountable.</div>
 
-    <div class="collapse" id="contact">
-      <div class="card card-body">
-        <div style="margin:auto;text-align:center;">While utmost care has been taken while uploading the orders/circulars/notifications/notices as issued by the various State and Central Govt.’s from time to time in relation to COVID-19, however, we are extremely sorry for any discrepancy found therein. If you find any discrepancy, issue, wish to report any anomaly, or send any additional information that may be added here, kindly send the information, suggestions and grievances to <a href="mailto:legal.cso@gmail.com" target="_top">legal.cso@gmail.com</a>.
-
-        <br />
-        <br />
-
-        Or contact us on twitter at: <a href="https://twitter.com/COVIDIndiaTrack/" target="_blank">@COVIDIndiaTrack</a><br />
-        <a href="https://twitter.com/jeevika_shiv/" target="_blank">Jeevika Shiv (@jeevika_shiv)</a> | <a href="https://twitter.com/AninditaAdhik13/" target="_blank">Anindita Adhikari (@AninditaAdhik13)</a> | <a href="https://twitter.com/ity_adi" target="_blank">Aditya Shrivastava (@ity_adi)</a>
-
-        <br />
-        <br />
-
-        This website is developed and maintained by <a href="https://github.com/DipeshAggarwal">Dipesh Aggarwal</a> | <a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a></div>
+      <hr class="about-text" style="background-color:#e1e1e1" />
+      <div class="row">
+        <div class="col">
+          <h1 class="display-2" style="margin:auto;text-align:center;padding-bottom:20px;">Contributors</h1>
+        </div>
       </div>
-    </div>
+      <div id="about-grid" class="row about-text"></div>
+
+      <p style="margin:auto;text-align:center;padding-top:30px;">
+        <a class="btn btn-primary" data-toggle="collapse" href="#contact" role="button" aria-expanded="false" aria-controls="contact" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Contact Us</a>
+        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with Us</a>
+        <a class="btn btn-primary" data-toggle="collapse" href="#disclaimer" role="button" aria-expanded="false" aria-controls="disclaimer" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Disclaimer</a>
+      </p>
+
+      <div class="collapse" id="contact">
+        <div class="card card-body">
+          <div style="margin:auto;text-align:center;">While utmost care has been taken while uploading the orders/circulars/notifications/notices as issued by the various State and Central Govt.’s from time to time in relation to COVID-19, however, we are extremely sorry for any discrepancy found therein. If you find any discrepancy, issue, wish to report any anomaly, or send any additional information that may be added here, kindly send the information, suggestions and grievances to <a href="mailto:legal.cso@gmail.com" target="_top">legal.cso@gmail.com</a>.
+
+          <br />
+          <br />
+
+          Or contact us on twitter at: <a href="https://twitter.com/COVIDIndiaTrack/" target="_blank">@COVIDIndiaTrack</a><br />
+          <a href="https://twitter.com/jeevika_shiv/" target="_blank">Jeevika Shiv (@jeevika_shiv)</a> | <a href="https://twitter.com/AninditaAdhik13/" target="_blank">Anindita Adhikari (@AninditaAdhik13)</a> | <a href="https://twitter.com/ity_adi" target="_blank">Aditya Shrivastava (@ity_adi)</a>
+
+          <br />
+          <br />
+
+          This website is developed and maintained by <a href="https://github.com/DipeshAggarwal">Dipesh Aggarwal</a> | <a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a></div>
+        </div>
+      </div>
 
       <div class="collapse" id="disclaimer">
         <div class="card card-body">
