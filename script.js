@@ -292,7 +292,7 @@ function prepareForCSV() {
 
     text = rowData[i].innerText.replace(/^[ ]+|[ ]+$/g, '');
     if (text.includes(",") || text.includes(";")) {
-      rowDataCSV.push(text.replace(/\n/g, ' ; ').replace(/(.*)/g, '\"$1\"')); 
+      rowDataCSV.push(text.replace(/\n/g, ' ; ').replace(/(.*)/g, '\"$1\"').replace('"""', '"')); 
     } else {
       rowDataCSV.push(text);
     }
