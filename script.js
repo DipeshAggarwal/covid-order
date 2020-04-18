@@ -3,7 +3,7 @@ $(document).ready(function () {
 
   var sheetID;
   var sheetName;
-  var pageLength = 15;
+  var pageLength = 10;
   var queryArray = [""];
   var columnBreakpoints = ["meddesktop", "meddesktop", "tabletp", "mobilel", "mobilep"];
   const urlParams = new URLSearchParams(window.location.search);
@@ -274,13 +274,6 @@ $(document).ready(function () {
           table.page.len( pageLength ).draw();
           this.innerText = "Show Default";
         }
-      });
-
-      $('#filters').on('shown.bs.collapse',function(){
-        $('#filter-btn').text('Hide Filters');
-      });
-      $('#filters').on('hidden.bs.collapse',function(){
-        $('#filter-btn').text('Show Filters');
       });
 
       $("#loader").hide();
