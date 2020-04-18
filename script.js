@@ -140,6 +140,7 @@ $(document).ready(function () {
         },
         "pageLength": pageLength,
         "lengthChange": true,
+        "lengthMenu": [10, 15, 20, 50, 100, 200],
         "bServerSide": false,
         "bProcessing": true,
         "data": sheetData,
