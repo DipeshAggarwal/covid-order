@@ -139,7 +139,7 @@ $(document).ready(function () {
           }
         },
         "pageLength": pageLength,
-        "lengthChange": false,
+        "lengthChange": true,
         "bServerSide": false,
         "bProcessing": true,
         "data": sheetData,
