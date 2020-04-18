@@ -1,4 +1,6 @@
 $(document).ready(function () {
+  $("#main-container").hide();
+
   var sheetID;
   var sheetName;
   var pageLength = 15;
@@ -140,24 +142,6 @@ $(document).ready(function () {
         "lengthChange": false,
         "bServerSide": false,
         "bProcessing": true,
-        "dom": 'Bfrtip',
-        "buttons": [
-          {
-            text: 'Expand All',
-            className: "shift-down",
-            attr: {
-              style: "margin-bottom:-50px;"
-            },
-            action: function ( e, dt, node, config ) {
-              if (table.rows('.parent').nodes().to$().find('td:first-child').trigger('click').length === 0) {
-                table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
-                this.text("Collapse All");
-              } else {
-                this.text("Expand All");
-              }
-            }
-          }
-        ],
         "data": sheetData,
         "aoColumns": columnObj,
         "aoColumnDefs": columnDefs,
@@ -212,6 +196,10 @@ $(document).ready(function () {
               $('<option/>').val(entry.trim()).html(entry.trim()).appendTo('#issue-box');
             };
           });
+          var dateValue = aData[columnObj[3].mDataProp].replace(/\s+/g, ' ').replace(/'/g, "\\'").trim();
+          if ($("#date-box option[value='" + dateValue + "']").length == 0) {
+            $('<option/>').val(dateValue).html(dateValue).appendTo('#date-box');
+          };
         },
         "fixedHeader": {
           header: true
@@ -234,6 +222,14 @@ $(document).ready(function () {
         }
       });
 
+      $('select#date-box').on('change', function (e) {
+        if ($(this).find(":selected").text() === "All Dates") {
+          table.column(3).search("").draw();
+        } else {
+          table.column(3).search($(this).find(":selected").val()).draw();
+        }
+      });
+
       // This block creates accepted query strings from the column names.
       // We set all the column case to lower case and use the first word of
       // the column name if it two contains two or more string, separated by
@@ -243,11 +239,11 @@ $(document).ready(function () {
       }
 
       for (var key of urlParams.keys()) {
-            if (queryArray.includes(key)) {
-              var index = queryArray.indexOf(key);
-              var value = urlParams.get(key);
+        if (queryArray.includes(key)) {
+          var index = queryArray.indexOf(key);
+          var value = urlParams.get(key);
 
-              table.column(index).search(value).draw();
+          table.column(index).search(value).draw();
 
           /*if (key === "state") {
               $("#state-box option[value="+value+"]").attr('selected', 'selected');
@@ -261,12 +257,36 @@ $(document).ready(function () {
         }
       };
 
-      $('#btn-show-all-doc').on('click', function() {
+      $('#btn-expand-summary').on('click', function() {
+        if (table.rows('.parent').nodes().to$().find('td:first-child').trigger('click').length === 0) {
+          table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
+          this.innerText = "Collapse All";
+        } else {
+          this.innerText = "Expand All";
+        }
+      });
+
+      $('#btn-show-all-summary').on('click', function() {
+        if (this.innerText === "Show All") {
+          table.page.len( -1 ).draw();
+          this.innerText = "Showing All";
+        } else if (this.innerText === "Showing All") {
+          table.page.len( pageLength ).draw();
+          this.innerText = "Show Default";
+        }
+      });
+
+      $('#filters').on('shown.bs.collapse',function(){
+        $('#filter-btn').text('Hide Filters');
+      });
+      $('#filters').on('hidden.bs.collapse',function(){
+        $('#filter-btn').text('Show Filters');
       });
 
       $("#loader").hide();
       $("#main-container").show();
       $("#printed-from").html('Printed from <a href="">' + window.location.protocol + "//" + window.location.hostname + '</a>')
+      console.log("hey");
     })
 });
 

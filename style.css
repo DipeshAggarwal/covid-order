@@ -65,6 +65,21 @@ th {
   border-color: #74d3dc;
 }
 
+.btn-block {
+  background-color: #74d3dc;
+  border-color: #74d3dc;
+  color: #000000;
+  font-size: 1.7em;
+  padding: 0px;
+  text-decoration: none;
+}
+
+.btn-block:hover {
+  background-color: #0069d9;
+  color: #000000;
+  text-decoration: none;
+}
+
 .pagination > li > a {
   background-color: white;
   color: #74d3dc;
@@ -161,6 +176,10 @@ th {
 
   .display-2, .display-3 {
     font-size: 3em;
+  }
+
+  .display-4 {
+    font-size: 2.5em;
   }
 }
 

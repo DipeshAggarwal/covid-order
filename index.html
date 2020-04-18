@@ -19,22 +19,41 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCCGLW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="loader"></div>
 
+    <h1 class="display-4" style="margin:auto;text-align:center;">COVID-19 Govt. Order Tracker</h1>
     <div id="main-container" style="margin:10px;">
-      <div class="row">
-        <div class="col">
-          <h1 style="margin:auto;text-align:center;padding-bottom:10px;">COVID-19 Measures Government Orders</h1>
-        </div>
-
-        <div class="row" style="padding-top:5px;">
-          <div class="col-sm-6 col-md-6 col">
-            <select id="state-box">
-              <option value="">All States & Centre</option>
-            </select>
+      <div id="accordion">
+        <div class="card">
+          <div class="card-header" id="filter-control">
+            <button class="btn btn-link btn-toggle btn-block" id="filter-btn" data-toggle="collapse" data-target="#filters" aria-expanded="false" aria-controls="filters"><div style="size:50px;">Show Filters</div></button>
           </div>
-          <div class="col-sm-6 col-md-6 col">
-            <select id="issue-box">
-              <option value="">All Issues</option>
-            </select>
+
+          <div id="filters" class="collapse" aria-labelledby="filter-control" data-parent="#accordion">
+            <div class="card-body">
+              <div class="row justify-content-md-center" style="padding-top:5px;padding-bottom:20px;">
+                <div class="col-sm col-md-auto col">
+                  <button id="btn-expand-summary" class="btn btn-dark shift-down d-flex">Expand All</button>
+                </div>
+                <div class="col-sm-6 col-md-auto col">
+                  <select id="state-box">
+                    <option value="">All States & Centre</option>
+                  </select>
+                </div>
+                <div class="col-sm-6 col-md-auto col">
+                  <select id="issue-box">
+                    <option value="">All Issues</option>
+                  </select>
+                </div>
+                <div class="col-sm-6 col-md-auto col">
+                  <select id="date-box">
+                    <option value="">All Dates</option>
+                  </select>
+                </div>
+                <div class="col-sm col-md-auto col">
+                  <button id="btn-show-all-summary" class="btn btn-dark shift-down d-flex">Show All</button>
+                </div>
+              </div>
+            </div>
+            </div>
           </div>
         </div>
       </div>
