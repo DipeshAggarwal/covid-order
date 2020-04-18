@@ -190,13 +190,6 @@ th {
 .form-control-sm {
   width: 50%!important;
   min-width: 220px;
-  background-color: #2c2c2c;
-  color: #ffffff;
-}
-
-.form-control-sm:focus {
-  background-color: #1c1c1c;
-  color: #ffffff;
 }
 
 .btn-primary {
@@ -226,7 +219,7 @@ th {
     border: 1px solid #e1e1e1;
   }
 
-  input[type="search"], input[type="search"]:focus, textarea, .pagination > li > a, .disabled {
+  input[type="search"], input[type="search"]:focus, textarea, .pagination > li > a, .disabled, .form-control-sm, .form-control-sm:focus {
     background-color: #2c2c2c!important;
     color: #e1e1e1;
   }
