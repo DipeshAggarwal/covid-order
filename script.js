@@ -55,7 +55,7 @@ $(document).ready(function () {
         if (i < 6) {
           if (i === 3 || i === 5) {
             columnDefs.push({
-              "width": "10%",
+              "width": "12%",
               "targets": i
             });
           } else if ( i === 1) {
@@ -152,9 +152,9 @@ $(document).ready(function () {
             action: function ( e, dt, node, config ) {
               if (table.rows('.parent').nodes().to$().find('td:first-child').trigger('click').length === 0) {
                 table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
-                this.text("Collapse All");
+                this.text("Collapse All Summaries");
               } else {
-                this.text("Expand All");
+                this.text("Expand All Summaries");
               }
             }
           }

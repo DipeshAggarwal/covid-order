@@ -69,21 +69,6 @@ th {
   border-color: #74d3dc;
 }
 
-.btn-block {
-  background-color: #74d3dc;
-  border-color: #74d3dc;
-  color: #000000;
-  font-size: 1.7em;
-  padding: 0px;
-  text-decoration: none;
-}
-
-.btn-block:hover {
-  background-color: #0069d9;
-  color: #000000;
-  text-decoration: none;
-}
-
 .pagination > li > a {
   background-color: white;
   color: #74d3dc;
@@ -111,6 +96,19 @@ th {
 
 .dataTables_info {
   white-space: normal!important;
+}
+
+#orderTable_info {
+  position: absolute;
+  right: 0px;
+}
+
+#orderTable_paginate {
+  margin-top: 60px;
+}
+
+.dataTables_length {
+  position: absolute;
 }
 
 #loader {
@@ -149,6 +147,7 @@ th {
     max-width: 280px;
     margin-bottom: 10px;
   }
+
   .row {
     margin-left: -5px;
   }
@@ -180,6 +179,19 @@ th {
 
   .display-2, .display-3 {
     font-size: 3em;
+  }
+
+  #orderTable_info {
+    position: static;
+    right: 0;
+  }
+
+  #orderTable_paginate {
+    margin-top: 0;
+  }
+
+  .dataTables_length {
+    position: static;
   }
 }
 
