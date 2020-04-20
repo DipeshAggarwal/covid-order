@@ -1,6 +1,4 @@
 $(document).ready(function () {
-  $("#main-container").hide();
-
   var sheetID;
   var sheetName;
   var pageLength = 10;
@@ -143,6 +141,24 @@ $(document).ready(function () {
         "lengthMenu": [10, 15, 20, 50, 100, 200],
         "bServerSide": false,
         "bProcessing": true,
+        "dom": 'Bfrtlip',
+        "buttons": [
+          {
+            text: 'Expand All Summaries',
+            className: "shift-down",
+            attr: {
+              style: "margin-bottom:-45px;"
+            },
+            action: function ( e, dt, node, config ) {
+              if (table.rows('.parent').nodes().to$().find('td:first-child').trigger('click').length === 0) {
+                table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
+                this.text("Collapse All");
+              } else {
+                this.text("Expand All");
+              }
+            }
+          }
+        ],
         "data": sheetData,
         "aoColumns": columnObj,
         "aoColumnDefs": columnDefs,
@@ -258,29 +274,9 @@ $(document).ready(function () {
         }
       };
 
-      $('#btn-expand-summary').on('click', function() {
-        if (table.rows('.parent').nodes().to$().find('td:first-child').trigger('click').length === 0) {
-          table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
-          this.innerText = "Collapse All";
-        } else {
-          this.innerText = "Expand All";
-        }
-      });
-
-      $('#btn-show-all-summary').on('click', function() {
-        if (this.innerText === "Show All") {
-          table.page.len( -1 ).draw();
-          this.innerText = "Showing All";
-        } else if (this.innerText === "Showing All") {
-          table.page.len( pageLength ).draw();
-          this.innerText = "Show Default";
-        }
-      });
-
       $("#loader").hide();
       $("#main-container").show();
-      $("#printed-from").html('Printed from <a href="">' + window.location.protocol + "//" + window.location.hostname + '</a>')
-      console.log("hey");
+      $("#printed-from").html('Printed from <a href="">' + window.location.protocol + "//" + window.location.hostname + '</a>');
     })
 });
 

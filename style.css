@@ -7,6 +7,10 @@ tr.shown td.details-control {
   background: url('details_close.png') no-repeat center center;
 }
 
+h1 {
+  font-size: 3.8em;
+}
+
 .pdf-link {
   color: #007bff;
   cursor: pointer;
@@ -176,14 +180,6 @@ th {
 
   .display-2, .display-3 {
     font-size: 3em;
-  }
-
-  .display-4 {
-    font-size: 2.5em;
-  }
-
-  #btn-show-all-summary, #btn-expand-summary {
-    width: 100%!important;
   }
 }
 

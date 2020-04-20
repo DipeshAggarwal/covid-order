@@ -7,11 +7,11 @@
     
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NCCGLW8');</script>
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/fh-3.1.6/r-2.2.3/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tabletop@1.6.2/src/tabletop.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
     <script type="text/javascript" charset="utf8" src="script.js"></script>
   </head>
 
@@ -19,39 +19,23 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCCGLW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="loader"></div>
 
-    <h1 class="display-4" style="margin:auto;text-align:center;">COVID-19 Government Order Tracker</h1>
+    <h1 style="margin:auto;text-align:center;">COVID-19 Government Order Tracker</h1>
     <div id="main-container" style="margin:10px;">
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="filter-control">
-            <button class="btn btn-link btn-toggle btn-block" id="filter-btn" data-toggle="collapse" data-target="#filters" aria-expanded="false" aria-controls="filters"><div style="size:50px;">Find Orders</div></button>
-          </div>
-
-          <div id="filters" class="collapse" aria-labelledby="filter-control" data-parent="#accordion">
-            <div class="card-body">
-              <div class="row justify-content-md-center" style="padding-top:5px;padding-bottom:20px;">
-                <div class="col-sm col-md-6 col-lg-auto col mb-md-2 pr-1 pl-1">
-                  <button id="btn-expand-summary" class="btn btn-dark shift-down d-flex mx-auto"><div style="margin:auto;text-align:center;">Expand All</div></button>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-auto col mb-md-2 pr-1 pl-1">
-                  <select id="state-box">
-                    <option value="">All States & Centre</option>
-                  </select>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-auto col pr-1 pl-1">
-                  <select id="issue-box">
-                    <option value="">All Issues</option>
-                  </select>
-                </div>
-                <div class="col-sm-6 col-md-6 col-lg-auto col pr-1 pl-1">
-                  <select id="date-box">
-                    <option value="">All Dates</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            </div>
-          </div>
+      <div class="row justify-content-md-center" style="padding-top:5px;padding-bottom:20px;">
+        <div class="col-sm-6 col-md-6 col-lg-auto col mb-md-2 pr-1 pl-1">
+          <select id="state-box">
+            <option value="">All States & Centre</option>
+          </select>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-auto col pr-1 pl-1">
+          <select id="issue-box">
+            <option value="">All Issues</option>
+          </select>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-auto col pr-1 pl-1">
+          <select id="date-box">
+            <option value="">All Dates</option>
+          </select>
         </div>
       </div>
 
