@@ -117,7 +117,7 @@ $(document).ready(function () {
                   if (col.data.includes("http")) {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                       '<td>' + col.title + '</td> ' +
-                      '<td class="pdf-link" onClick=' + 'window.open("' + col.data + '")>' + col.data + '</td>' +
+                      '<td class="pdf-link" onClick=' + 'window.open("' + col.data + '")>Click to view Order</td>' +
                       '</tr>';
                   } else {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
