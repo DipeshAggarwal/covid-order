@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  document.getElementById("footer-bottom").classList.add("stick-to-bottom");
   var sheetID;
   var sheetName;
   var pageLength = 10;
@@ -275,7 +276,7 @@ $(document).ready(function () {
       };
 
       $("#loader").hide();
-      $("#main-container").show();
+      document.getElementById("footer-bottom").classList.remove("stick-to-bottom");
       $("#printed-from").html('Printed from <a href="">' + window.location.protocol + "//" + window.location.hostname + '</a>');
     })
 });

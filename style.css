@@ -1,10 +1,10 @@
-td.details-control {
-  background: url('details_open.png') no-repeat center center;
-  cursor: pointer;
+:root {
+  --accent-color: #74d3dc;
 }
 
-tr.shown td.details-control {
-  background: url('details_close.png') no-repeat center center;
+.horz-center {
+  margin: auto;
+  text-align: center;
 }
 
 h1 {
@@ -27,7 +27,7 @@ select {
   height: 40px;
   border: none;
   outline: 0;
-  border-bottom: 2px solid #74d3dc;
+  border-bottom: 2px solid var(--accent-color);
   width: 15vw;
   min-width: 340px;
   margin: auto;
@@ -43,7 +43,7 @@ select {
 
 select:focus {
   content: "";
-  background-color: #74d3dc;
+  background-color: var(--accent-color);
   text-align-last: center;
 }
 
@@ -51,13 +51,8 @@ select:hover {
   color: #ffffff;
 }
 
-.row {
-  margin-right: 0px;
-  margin-left: 0px;
-}
-
 th {
-  background-color: #74d3dc;
+  background-color: var(--accent-color);
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
@@ -65,13 +60,21 @@ th {
 }
 
 .btn-primary {
-  background-color: #74d3dc;
-  border-color: #74d3dc;
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.stick-to-bottom {
+  position: absolute;
+  width: 100vw;
+  bottom: 0px;
+  margin: auto;
+  text-align: center;
 }
 
 .pagination > li > a {
   background-color: white;
-  color: #74d3dc;
+  color: var(--accent-color);
 }
 
 .pagination > li > a:focus,
@@ -85,13 +88,13 @@ th {
 
 .pagination > .active > a {
   color: white;
-  background-color: #74d3dc !important;
-  border: solid 1px #74d3dc !important;
+  background-color: var(--accent-color) !important;
+  border: solid 1px var(--accent-color) !important;
 }
 
 .pagination > .active > a:hover {
-  background-color: #74d3dc !important;
-  border: solid 1px #74d3dc;
+  background-color: var(--accent-color) !important;
+  border: solid 1px var(--accent-color);
 }
 
 .dataTables_info {
@@ -100,7 +103,7 @@ th {
 
 #orderTable_info {
   position: absolute;
-  right: 0px;
+  right: 10px;
 }
 
 #orderTable_paginate {
@@ -119,7 +122,7 @@ th {
   -webkit-transform: translateX(-50%) translateY(-50%);
   transform: translateX(-50%) translateY(-50%);
   border: 32px solid #f3f3f3; /* Light grey */
-  border-top: 32px solid #74d3dc; /* Blue */
+  border-top: 32px solid var(--accent-color);
   border-radius: 50%;
   width: 180px;
   height: 180px;
@@ -291,7 +294,7 @@ th {
 .avatar-circle {
   width: 60px;
   height: 60px;
-  background-color: #74d3dc;
+  background-color: var(--accent-color);
   text-align: center;
   border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -304,9 +307,9 @@ th {
 
 .initials {
   position: relative;
-  top: 15px; /* 25% of parent */
-  font-size: 30px; /* 50% of parent */
-  line-height: 30px; /* 50% of parent */
+  top: 15px;
+  font-size: 30px;
+  line-height: 30px;
   color: #2c2c2c;
   font-family: "Courier New", monospace;
   font-weight: bold;
@@ -320,5 +323,5 @@ th {
 
 .card {
   border: 0;
-  border-bottom: 2px solid #74d3dc;
+  border-bottom: 2px solid var(--accent-color);
 }

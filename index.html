@@ -15,12 +15,12 @@
     <script type="text/javascript" charset="utf8" src="script.js"></script>
   </head>
 
-  <body>
+  <body style="overflow-x:hidden;height:100vh;">
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NCCGLW8" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="loader"></div>
 
-    <h1 style="margin:auto;text-align:center;">COVID-19 Government Order Tracker</h1>
-    <div id="main-container" style="margin:10px;">
+    <h1 class="horz-center">COVID-19 Government Order Tracker</h1>
+    <div id="main-container" style="margin:10px">
       <div class="row justify-content-md-center" style="padding-top:5px;">
         <div class="col-sm-6 col-md-6 col-lg-auto col mb-md-2 pr-1 pl-1">
           <select id="state-box">
@@ -42,7 +42,7 @@
     	<table class="display responsive table-responsive table table-bordered table-striped table-hover" width="100%" id="orderTable">
     	  <thead>
     		  <tr id="firstRow">
-            <th style="width:5px;"></th>
+            <th></th>
     		  </tr>
     	  </thead>
 
@@ -50,42 +50,44 @@
     	</table>
       <br>
 
-      <div id="updated-on" style="margin:auto;text-align:center;"></div>
+      <div id="updated-on" class="horz-center"></div>
       <br />
-      <p style="margin:auto;text-align:center;">
-        <a class="btn btn-primary" data-toggle="collapse" href="#contact" role="button" aria-expanded="false" aria-controls="contact" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Contact Us</a>
-        <a class="btn btn-primary" href="./about-us.html" target="_blank">About Us</a>
-        <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with Us</a>
-        <a class="btn btn-primary" data-toggle="collapse" href="#disclaimer" role="button" aria-expanded="false" aria-controls="disclaimer" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Disclaimer</a>
-      </p>
+      <div id="footer-bottom">
+        <p class="horz-center">
+          <a class="btn btn-primary" data-toggle="collapse" href="#contact" role="button" aria-expanded="false" aria-controls="contact" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Contact Us</a>
+          <a class="btn btn-primary" href="./about-us.html" target="_blank">About Us</a>
+          <a class="btn btn-primary" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with Us</a>
+          <a class="btn btn-primary" data-toggle="collapse" href="#disclaimer" role="button" aria-expanded="false" aria-controls="disclaimer" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Disclaimer</a>
+        </p>
 
-      <div class="collapse" id="contact">
-        <div class="card card-body">
-          <div style="margin:auto;text-align:center;">
-          While utmost care has been taken while uploading the orders/circulars/notifications/notices as issued by the various State and Central Govt.’s from time to time in relation to COVID-19, however, we are extremely sorry for any discrepancy found therein. If you find any discrepancy, issue, wish to report any anomaly, or send any additional information that may be added here, kindly send the information, suggestions and grievances to <a href="mailto:legal.cso@gmail.com" target="_top">legal.cso@gmail.com</a>.
+        <div class="collapse" id="contact">
+          <div class="card card-body">
+            <div class="horz-center">
+            While utmost care has been taken while uploading the orders/circulars/notifications/notices as issued by the various State and Central Govt.’s from time to time in relation to COVID-19, however, we are extremely sorry for any discrepancy found therein. If you find any discrepancy, issue, wish to report any anomaly, or send any additional information that may be added here, kindly send the information, suggestions and grievances to <a href="mailto:legal.cso@gmail.com" target="_top">legal.cso@gmail.com</a>.
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          Or contact us on twitter at: <a href="https://twitter.com/COVIDIndiaTrack/" target="_blank">@COVIDIndiaTrack</a><br />
-          <a href="https://twitter.com/jeevika_shiv/" target="_blank">Jeevika Shiv (@jeevika_shiv)</a> | <a href="https://twitter.com/AninditaAdhik13/" target="_blank">Anindita Adhikari (@AninditaAdhik13)</a> | <a href="https://twitter.com/ity_adi" target="_blank">Aditya Shrivastava (@ity_adi)</a>
+            Or contact us on twitter at: <a href="https://twitter.com/COVIDIndiaTrack/" target="_blank">@COVIDIndiaTrack</a><br />
+            <a href="https://twitter.com/jeevika_shiv/" target="_blank">Jeevika Shiv (@jeevika_shiv)</a> | <a href="https://twitter.com/AninditaAdhik13/" target="_blank">Anindita Adhikari (@AninditaAdhik13)</a> | <a href="https://twitter.com/ity_adi" target="_blank">Aditya Shrivastava (@ity_adi)</a>
 
-          <br />
-          <br />
+            <br />
+            <br />
 
-          This website is developed and maintained by <a href="https://github.com/DipeshAggarwal">Dipesh Aggarwal</a> | <a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a></div>
+            This website is developed and maintained by <a href="https://github.com/DipeshAggarwal">Dipesh Aggarwal</a> | <a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a></div>
+          </div>
         </div>
-      </div>
 
-      <div class="collapse" id="disclaimer">
-        <div class="card card-body">
-          <div style="margin:auto;text-align:center;">This web portal only lists the various Government orders/notifications/circulars/notices, issued by various State Govt.’s and Central Govt. issued from time to time in relation to  COVID-19 and is hosted here only for purposes of general public awareness, information and research. The web portal does not undertake any responsibility of the correctness or truthfulness of the contents of these govt. orders. Visitors are advised to visit the respective official govt. department to verify the information provided in such orders/notifications/circulars/notices.</div>
+        <div class="collapse" id="disclaimer">
+          <div class="card card-body">
+            <div class="horz-center">This web portal only lists the various Government orders/notifications/circulars/notices, issued by various State Govt.’s and Central Govt. issued from time to time in relation to  COVID-19 and is hosted here only for purposes of general public awareness, information and research. The web portal does not undertake any responsibility of the correctness or truthfulness of the contents of these govt. orders. Visitors are advised to visit the respective official govt. department to verify the information provided in such orders/notifications/circulars/notices.</div>
+          </div>
         </div>
       </div>
     </div>
 
     <div id="print-container">
-      <h1 id="printed-from" style="margin:auto;text-align:center;padding-bottom:5px;padding-top:8px;"></h1>
+      <h1 id="printed-from" class="horz-center" style="padding-bottom:5px;padding-top:8px;"></h1>
       <table id="print-table" style="table-layout:fixed;width:100%;">
         <tr><td style="width:24%;"></td><td></td></tr>
       </table>
