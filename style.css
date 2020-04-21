@@ -275,7 +275,11 @@ th {
   }
 
   .dataTables_length {
-    color: black;
+    display: hidden;
+  }
+
+  .disabled {
+    background-color: white;
   }
 
   #orderTable_info {
