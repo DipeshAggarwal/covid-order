@@ -270,6 +270,18 @@ th {
     display: block!important;
   }
 
+  .print-text {
+    color: black;
+  }
+
+  .dataTables_length {
+    color: black;
+  }
+
+  #orderTable_info {
+    color: black;
+  }
+
   h1 {
     color: black;
   }
