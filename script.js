@@ -146,7 +146,7 @@ $(document).ready(function () {
         "buttons": [
           {
             text: 'Expand All Summaries',
-            className: "shift-down",
+            className: "shift-down not-print",
             attr: {
               style: "margin-bottom:-45px;"
             },
