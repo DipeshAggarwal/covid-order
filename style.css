@@ -104,10 +104,15 @@ th {
 #orderTable_info {
   position: absolute;
   right: 10px;
+  margin-top: -10px!important;
 }
 
 #orderTable_paginate {
-  margin-top: 60px;
+  margin-top: 50px;
+}
+.pagination {
+  margin: auto;
+  text-align: center;
 }
 
 .dataTables_length {
@@ -205,7 +210,6 @@ th {
 
 .btn-primary {
   margin-right: 10px;
-  margin-bottom: 10px;
 }
 
 #orderTable_filter {
@@ -279,7 +283,7 @@ th {
   }
 
   .disabled {
-    background-color: white;
+    background-color: white!important;
   }
 
   #orderTable_info {
