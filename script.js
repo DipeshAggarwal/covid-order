@@ -215,8 +215,12 @@ $(document).ready(function () {
             };
           });
           var dateValue = aData[columnObj[3].mDataProp].replace(/\s+/g, ' ').replace(/'/g, "\\'").trim();
+
+          if (dateValue === "") {
+            return;
+          }
           if ($("#date-box option[value='" + dateValue + "']").length == 0) {
-            $('<option/>').val(dateValue).html(dateValue).appendTo('#date-box');
+            $('<option/>').val(dateValue).html(dateValue).prependTo('#date-box');
           };
         },
         "fixedHeader": {
@@ -224,6 +228,7 @@ $(document).ready(function () {
         }
       });
 
+      $("#date-box").prepend('<option value="" selected="selected">All Dates</option>')
       $('select#state-box').on('change', function (e) {
         if ($(this).find(":selected").text() === "All State") {
           table.column(1).search("\\*\\", true, false).draw();
