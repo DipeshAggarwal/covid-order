@@ -57,7 +57,6 @@ $(document).ready(function () {
 
       sheetData.map(function(entry) {
         var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]] + "&" + queryArray[3] + "=" + entry[columnNames[2]]).replace(/ /g, "%20");
-        console.log(link);
         entry["Link to Summary"] = "<a href="+ link +" target='_blank'>Link to this Summary</a>";
         return entry;
       });
@@ -151,7 +150,7 @@ $(document).ready(function () {
               var data = $.map(columns, function (col, i) {
                 // We customise how we want to show the data when the plus sign is clicked
                 if (col.hidden && col.data) {
-                  if (col.data.includes("http")) {
+                  if (col.data.includes("http") && col.title != "Link to Summary") {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                       '<td>' + col.title + '</td> ' +
                       '<td class="pdf-link" onClick=' + 'window.open("' + col.data + '")>Click to view Order</td>' +
