@@ -188,7 +188,7 @@ $(document).ready(function () {
             return;
           }
           var api = this.api();
-          console.log( api.rows( {page:'current'} ).data() );
+          console.log( api.rows( {page:'current'} ).data()[0] );
         },
         "dom": 'Bfrtlip',
         "buttons": [
@@ -298,8 +298,10 @@ $(document).ready(function () {
         }
       });
 
-      getDrawData = true;
       for (var key of urlParams.keys()) {
+        if (key === "date") {
+          getDrawData = true;
+        }
         if (queryArray.includes(key)) {
           var index = queryArray.indexOf(key);
           var valueOfKey = urlParams.get(key);
