@@ -33,7 +33,7 @@ select, #date-box {
   min-width: 340px;
   margin: auto;
   letter-spacing: .10em;
-  font-size: 26 px;
+  font-size: 26px;
   font-weight: 600;
   display: block;
   color: #fff;
@@ -360,4 +360,29 @@ select:hover {
 
 .disabled {
   border-radius: 0px!important;
+}
+
+.copied-text {
+  background-color: var(--accent-color);
+  color: #121212;
+  text-decoration: none;
+  font-weight: 1000;
+  display: none;
+  margin: 0px;
+  margin-left:10px;
+  padding: 0em;
+  padding-left: 0.15em;
+  padding-right: 0.15em;
+}
+
+.copied-text:hover {
+  text-decoration: none!important;
+}
+
+.prentend-link {
+  color: #007bff;
+}
+
+.prentend-link:hover {
+  text-decoration: underline;
 }

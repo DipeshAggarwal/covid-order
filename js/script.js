@@ -57,7 +57,7 @@ $(document).ready(function () {
 
       sheetData.map(function(entry) {
         var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]] + "&" + queryArray[3] + "=" + entry[columnNames[2]]).replace(/ /g, "%20");
-        entry["Copy Link to Summary"] = '<a href="#" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary</a>';
+        entry["Copy Link to Summary"] = '<div class="prentend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>';
         return entry;
       });
 
@@ -319,6 +319,12 @@ function copyToClipboard(obj) {
   el.select();
   document.execCommand('copy');
   document.body.removeChild(el);
+  
+  var ele = obj.lastChild;
+  $(ele).fadeIn();
+  setTimeout(function() {
+    $(ele).fadeOut()
+  }, 5000);
 }
 
 function prepareForCSV() {
