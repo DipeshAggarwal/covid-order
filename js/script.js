@@ -57,7 +57,7 @@ $(document).ready(function () {
 
       sheetData.map(function(entry) {
         var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]] + "&" + queryArray[3] + "=" + entry[columnNames[2]]).replace(/ /g, "%20");
-        entry["Link to Summary"] = "<a href="+ link +" target='_blank'>Link to this Summary</a>";
+        entry["Copy Link to Summary"] = '<a href="#" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary</a>';
         return entry;
       });
 
@@ -119,9 +119,9 @@ $(document).ready(function () {
         }
       };
       columnObj.push({
-        "mDataProp": "Link to Summary"
+        "mDataProp": "Copy Link to Summary"
       });
-      $("#firstRow").append('<th class="none">Link to Summary</th>');
+      $("#firstRow").append('<th class="none">Copy Link to Summary</th>');
 
       // Add a Print Column
       $("#firstRow").append('<th class="none not-print">Print</th>');
@@ -153,7 +153,7 @@ $(document).ready(function () {
                   if (col.data.includes("http") && col.title != "Link to Summary") {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                       '<td>' + col.title + '</td> ' +
-                      '<td class="pdf-link" onClick=' + 'window.open("' + col.data + '")>Click to view Order</td>' +
+                      '<td class="pdf-link" onClick=window.open("' + col.data + '")><span class="fa fa-external-link">&nbsp;&nbsp;</span>Click to view Order</td>' +
                       '</tr>';
                   } else {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
@@ -311,6 +311,15 @@ $(document).ready(function () {
 
 // A fallback in case the browser does not fire print events at the right time
 var printSetupDone = false;
+
+function copyToClipboard(obj) {
+  const el = document.createElement('textarea');
+  el.value = obj.getAttribute("data-value");
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+}
 
 function prepareForCSV() {
   var dataCSV = [];
