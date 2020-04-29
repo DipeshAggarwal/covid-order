@@ -3,7 +3,6 @@ $(document).ready(function () {
 
   var today = new Date();
   var month = today.getMonth() + 1;
-  console.log(month);
   $('#date-box').datepicker({
     format: "dd/mm/yyyy",
     startDate: "01/03/2020",
@@ -15,7 +14,7 @@ $(document).ready(function () {
   var sheetID;
   var sheetName;
   var pageLength = 10;
-  var queryArray = [""];
+  queryArray = [""];
   var columnBreakpoints = ["meddesktop", "meddesktop", "tabletp", "mobilel", "mobilep"];
   const urlParams = new URLSearchParams(window.location.search);
 
@@ -46,8 +45,23 @@ $(document).ready(function () {
     })
     .then(function (data, tabletop) {
       columnNames = data[sheetName].columnNames;
+      sheetData = data[sheetName].elements;
 
-      var sheetData = data[sheetName].elements;
+      // This block creates accepted query strings from the column names.
+      // We set all the column case to lower case and use the first word of
+      // the column name if it two contains two or more string, separated by
+      // . , + - / " ' ; : and space.
+      for (var name of columnNames) {
+        queryArray.push(name.trim().toLowerCase().split(/[\+\s,-//\."':;]+/)[0]);
+      }
+
+      sheetData.map(function(entry) {
+        var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]] + "&" + queryArray[3] + "=" + entry[columnNames[2]]).replace(/ /g, "%20");
+        console.log(link);
+        entry["Link to Summary"] = "<a href="+ link +" target='_blank'>Link to this Summary</a>";
+        return entry;
+      });
+
       var columnObj = [{
         "orderable": false,
         "data": null,
@@ -57,6 +71,13 @@ $(document).ready(function () {
         "width": "5%",
         "targets": 0
       }];
+
+      // This is the first column which has the expand button
+      columnDefs.push({
+        className: 'control new-summary',
+        orderable: false,
+        targets: 0
+      });
 
       // Here we separate the data column wise to feed to DataTable
       for (var i = 0; i < columnNames.length; i++) {
@@ -83,7 +104,7 @@ $(document).ready(function () {
             });
           } else {
             columnDefs.push({
-              "width": "35%",
+              "width": "38%",
               "targets": i
             });
           }
@@ -98,22 +119,25 @@ $(document).ready(function () {
           $("#firstRow").append('<th class="none">' + columnNames[i] + '</th>');
         }
       };
+      columnObj.push({
+        "mDataProp": "Link to Summary"
+      });
+      $("#firstRow").append('<th class="none">Link to Summary</th>');
+
+      // Add a Print Column
       $("#firstRow").append('<th class="none not-print">Print</th>');
       columnObj.push({
         "orderable": false,
         "data": null,
         "defaultContent": '<a href="#" class="not-print" onClick="printOrder();"><span class="fa fa-print">&nbsp;&nbsp;</span>Print selected summaries</a>'
       });
+
+      // Add a Download Column
       $("#firstRow").append('<th class="none not-print">Download</th>');
       columnObj.push({
         "orderable": false,
         "data": null,
         "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsCSV(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download selected summaries as CSV</a>'
-      });
-      columnDefs.push({
-        className: 'control new-summary',
-        orderable: false,
-        targets: 0
       });
 
       //$("#updated-on").html("The data was last updated on <b>" + new Date(data[sheetName].raw.feed.updated.$t) + "</b>");
@@ -249,21 +273,12 @@ $(document).ready(function () {
       });
 
       $('input#date-box').on('change', function (e) {
-        console.log($(this).val());
         if ($(this).text() === "All Dates") {
           table.column(3).search("").draw();
         } else {
           table.column(3).search($(this).val()).draw();
         }
       });
-
-      // This block creates accepted query strings from the column names.
-      // We set all the column case to lower case and use the first word of
-      // the column name if it two contains two or more string, separated by
-      // . , + - / " ' ; : and space.
-      for (var name of columnNames) {
-        queryArray.push(name.toLowerCase().split(/[\+\s,-//\."':;]+/)[0]);
-      }
 
       for (var key of urlParams.keys()) {
         if (queryArray.includes(key)) {
