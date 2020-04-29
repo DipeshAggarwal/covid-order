@@ -301,7 +301,7 @@ select:hover {
   }
 
   table {
-    page-break-inside: auto
+    page-break-inside: auto;
   }
 
   tr {
@@ -313,7 +313,7 @@ select:hover {
     border-bottom: 1px solid #ddd;
     padding: 15px;
     text-align: left;
-    color: black;
+    color: black!important;
   }
 }
 

@@ -98,20 +98,20 @@ $(document).ready(function () {
           $("#firstRow").append('<th class="none">' + columnNames[i] + '</th>');
         }
       };
-      $("#firstRow").append('<th class="none print-button">Operation</th>');
+      $("#firstRow").append('<th class="none not-print">Print</th>');
       columnObj.push({
         "orderable": false,
         "data": null,
-        "defaultContent": '<a href="#" onClick="printOrder();">Print selected summaries</a>'
+        "defaultContent": '<a href="#" class="not-print" onClick="printOrder();"><span class="fa fa-print">&nbsp;&nbsp;</span>Print selected summaries</a>'
       });
-      $("#firstRow").append('<th class="none print-button">Operation</th>');
+      $("#firstRow").append('<th class="none not-print">Download</th>');
       columnObj.push({
         "orderable": false,
         "data": null,
-        "defaultContent": '<a href="#" onClick="downloadOrderAsCSV(this);">Download selected summaries as CSV</a>'
+        "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsCSV(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download selected summaries as CSV</a>'
       });
       columnDefs.push({
-        className: 'control',
+        className: 'control new-summary',
         orderable: false,
         targets: 0
       });
@@ -304,7 +304,7 @@ function prepareForCSV() {
       continue;
     }
 
-    if (rowData[i].innerText === "Print selected summaries") {
+    if (rowData[i].innerText.trim() === "Print selected summaries") {
       dataCSV.push(rowDataCSV.join(","));
       rowDataCSV = [];
       continue;
@@ -340,30 +340,16 @@ function readyForPrinting() {
 
   for (var i = 0; i < rowData.length; i++) {
     // Only useful when there are multiple entries being printed.
-    // It makes sure to reset the column length index variable.
-    if (colIndex === columnNames.length) {
-      colIndex = 0;
-    }
-
-    // Only useful when there are multiple entries being printed.
     // Adds a breaker between two entries.
     // Also stops the sorting column from being printed.
-    if (rowData[i].className === "control sorting_1") {
-      if (newEntry === true) {
-        $("#print-table").append('<tr><td></td><td></td></tr>');
-        $("#print-table").append('<tr><td></td><td> <b>NEW ENTRY</b> </td></tr>');
-        $("#print-table").append('<tr><td></td><td></td></tr>');
-        newEntry = false;
-      }
+    if ($(rowData[i]).hasClass("new-summary")) {
+      $("#print-table").append('<tr><td></td><td></td></tr>');
+      $("#print-table").append('<tr><td></td><td> <b>NEW ENTRY</b> </td></tr>');
+      $("#print-table").append('<tr><td></td><td></td></tr>');
+      colIndex = 0;
       continue;
     }
-
-    if (rowData[i].innerText === "Print selected summaries") {
-      continue;
-    }
-    // Stops the print column from being printed.
-    if (rowData[i].innerText === "Download selected summaries as CSV") {
-      newEntry = true;
+    if (rowData[i].innerText.trim() === "Print selected summaries" || rowData[i].innerText.trim() === "Download selected summaries as CSV") {
       continue;
     }
 
