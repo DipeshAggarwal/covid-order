@@ -1,6 +1,10 @@
 $(document).ready(function () {
   document.getElementById("footer-bottom").classList.add("stick-to-bottom");
 
+  // This block of code ensures that endusers can search for orders until the current day
+  // TODO: Add some sort of freeze in the future so that when the website it accessed years later,
+  //       endusers don't get a too wide range to select
+  // TODO: Get the start date from the sheet instead of hard coding it in.
   var today = new Date();
   var month = today.getMonth() + 1;
   $('#date-box').datepicker({
@@ -14,9 +18,9 @@ $(document).ready(function () {
   var sheetID;
   var sheetName;
   var pageLength = 10;
-  queryArray = [""];
   var columnBreakpoints = ["meddesktop", "meddesktop", "tabletp", "mobilel", "mobilep"];
   const urlParams = new URLSearchParams(window.location.search);
+  queryArray = [""];
 
   // Check if a custom sheet query is provided
   if (urlParams.get("sheet")) {
@@ -47,7 +51,7 @@ $(document).ready(function () {
       columnNames = data[sheetName].columnNames;
       sheetData = data[sheetName].elements;
 
-      // This block creates accepted query strings from the column names.
+      // This block generates accepted query strings from the column names.
       // We set all the column case to lower case and use the first word of
       // the column name if it two contains two or more string, separated by
       // . , + - / " ' ; : and space.
@@ -56,7 +60,7 @@ $(document).ready(function () {
       }
 
       sheetData.map(function(entry) {
-        var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]] + "&" + queryArray[3] + "=" + entry[columnNames[2]]).replace(/ /g, "%20");
+        var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]] + "&" + queryArray[3] + "=" + entry[columnNames[2]] + "&expand").replace(/ /g, "%20");
         entry["Copy Link to Summary"] = '<div class="prentend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>';
         return entry;
       });
@@ -118,6 +122,8 @@ $(document).ready(function () {
           $("#firstRow").append('<th class="none">' + columnNames[i] + '</th>');
         }
       };
+
+      // Manually add the generated summary link button
       columnObj.push({
         "mDataProp": "Copy Link to Summary"
       });
@@ -300,6 +306,8 @@ $(document).ready(function () {
             value = urlParams.get(key);
             table.column(index).search(value).draw();
           }
+        } else  if (key == "expand") {
+          table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
         }
       };
 
@@ -312,6 +320,7 @@ $(document).ready(function () {
 // A fallback in case the browser does not fire print events at the right time
 var printSetupDone = false;
 
+// Copy text to clipboard
 function copyToClipboard(obj) {
   const el = document.createElement('textarea');
   el.value = obj.getAttribute("data-value");
@@ -320,6 +329,7 @@ function copyToClipboard(obj) {
   document.execCommand('copy');
   document.body.removeChild(el);
   
+  // Fade in and fade out the copied text notification
   var ele = obj.lastChild;
   $(ele).fadeIn();
   setTimeout(function() {
