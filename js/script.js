@@ -302,8 +302,7 @@ $(document).ready(function () {
           } else if (key == "issues") {
             document.getElementById("issue-box").value = valueOfKey.split(",")[0];
           } else if (key == "date") {
-            var utcDate = valueOfKey.split("/");
-            $('#date-box').datepicker("update", utcDate[2] + "-" + utcDate[1] + "-" + utcDate[0]);
+            document.getElementById("date-box").value = valueOfKey;
           }
         } else if ( !(isNaN(key)) ) {
           var index = parseInt(key);
