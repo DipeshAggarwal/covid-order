@@ -293,18 +293,23 @@ $(document).ready(function () {
       for (var key of urlParams.keys()) {
         if (queryArray.includes(key)) {
           var index = queryArray.indexOf(key);
-          var value = urlParams.get(key);
+          var valueOfKey = urlParams.get(key);
 
-          table.column(index).search(value).draw();
+          table.column(index).search(valueOfKey).draw();
 
-          /*if (key === "state") {
-              $("#state-box option[value="+value+"]").attr('selected', 'selected');
-          }*/
+          if (key === "states") {
+            document.getElementById("state-box").value = valueOfKey;
+          } else if (key == "issues") {
+            document.getElementById("issue-box").value = valueOfKey.split(",")[0];
+          } else if (key == "date") {
+            var utcDate = valueOfKey.split("/");
+            $('#date-box').datepicker("update", utcDate[2] + "-" + utcDate[1] + "-" + utcDate[0]);
+          }
         } else if ( !(isNaN(key)) ) {
           var index = parseInt(key);
           if (key < queryArray.length) {
-            value = urlParams.get(key);
-            table.column(index).search(value).draw();
+            valueOfKey = urlParams.get(key);
+            table.column(index).search(valueOfKey).draw();
           }
         } else  if (key == "expand") {
           table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
