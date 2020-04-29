@@ -22,7 +22,7 @@ h1 {
   text-decoration: underline;
 }
 
-select {
+select, #date-box {
   background: none transparent;
   height: 40px;
   border: none;
@@ -35,7 +35,7 @@ select {
   font-size: 26 px;
   font-weight: 600;
   display: block;
-  color: #000;
+  color: #fff;
   position: relative;
   transition: color .3s .15s ease-in;
   text-align-last: center;
@@ -51,8 +51,8 @@ select:hover {
   color: #ffffff;
 }
 
-th {
-  background-color: var(--accent-color);
+#firstRow, .active {
+  background-color: var(--accent-color)!important;
 }
 
 .table-striped > tbody > tr:nth-child(2n+1) > td, .table-striped > tbody > tr:nth-child(2n+1) > th {
@@ -148,12 +148,17 @@ th {
 }
 
 @media (max-width: 765px) {
-  select {
+  select, #date-box {
     font-size: 20px;
     font-weight: 500;
     min-width: 280px;
     max-width: 280px;
     margin-bottom: 10px;
+  }
+
+  .day {
+    width: 40px;
+    height: 40px;
   }
 
   .row {
@@ -240,7 +245,7 @@ th {
     color: #e1e1e1;
   }
 
-  h1, select, td, label, .dataTables_info, .btn-primary, #updated-on, .about-text {
+  h1, select, td:not(.day), label, .dataTables_info, .btn-primary, #updated-on, .about-text {
     color: #e1e1e1;
   }
 
@@ -345,4 +350,13 @@ th {
 .card {
   border: 0;
   border-bottom: 2px solid var(--accent-color);
+}
+
+.day {
+  width: 47px!important;
+  height: 47px!important;
+}
+
+.disabled {
+  border-radius: 0px!important;
 }

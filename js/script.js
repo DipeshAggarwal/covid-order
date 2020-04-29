@@ -1,5 +1,17 @@
 $(document).ready(function () {
   document.getElementById("footer-bottom").classList.add("stick-to-bottom");
+
+  var today = new Date();
+  var month = today.getMonth() + 1;
+  console.log(month);
+  $('#date-box').datepicker({
+    format: "dd/mm/yyyy",
+    startDate: "01/03/2020",
+    endDate: today.getDate() + "/" + month + "/" + today.getUTCFullYear(),
+    maxViewMode: 1,
+    clearBtn: true
+  });
+
   var sheetID;
   var sheetName;
   var pageLength = 10;
@@ -214,21 +226,12 @@ $(document).ready(function () {
               $('<option/>').val(entry.trim()).html(entry.trim()).appendTo('#issue-box');
             };
           });
-          var dateValue = aData[columnObj[3].mDataProp].replace(/\s+/g, ' ').replace(/'/g, "\\'").trim();
-
-          if (dateValue === "") {
-            return;
-          }
-          if ($("#date-box option[value='" + dateValue + "']").length == 0) {
-            $('<option/>').val(dateValue).html(dateValue).prependTo('#date-box');
-          };
         },
         "fixedHeader": {
           header: true
         }
       });
 
-      $("#date-box").prepend('<option value="" selected="selected">All Dates</option>')
       $('select#state-box').on('change', function (e) {
         if ($(this).find(":selected").text() === "All State") {
           table.column(1).search("\\*\\", true, false).draw();
@@ -245,11 +248,12 @@ $(document).ready(function () {
         }
       });
 
-      $('select#date-box').on('change', function (e) {
-        if ($(this).find(":selected").text() === "All Dates") {
+      $('input#date-box').on('change', function (e) {
+        console.log($(this).val());
+        if ($(this).text() === "All Dates") {
           table.column(3).search("").draw();
         } else {
-          table.column(3).search($(this).find(":selected").val()).draw();
+          table.column(3).search($(this).val()).draw();
         }
       });
 
