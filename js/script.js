@@ -271,6 +271,11 @@ $(document).ready(function () {
         }
       });
 
+      $('select#colour-box').on('change', function (e) {
+        document.documentElement.style.setProperty('--accent-color', $(this).find(":selected").val());
+        document.documentElement.style.setProperty('--stripe-color', $(this).find(":selected").val()+"50");
+      });
+
       $('input#date-box').on('change', function (e) {
         if ($(this).text() === "All Dates") {
           table.column(3).search("").draw();

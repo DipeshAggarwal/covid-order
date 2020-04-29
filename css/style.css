@@ -1,6 +1,6 @@
 :root {
-  --accent-color: #74d3dc;
-  --stripe-color: #74d3dc50;
+  --accent-color: #1fb622;
+  --stripe-color: #1fb62250;
 }
 
 .horz-center {
@@ -251,13 +251,13 @@ select:hover {
   }
 
   .btn-primary {
-    background-color: #74d3dc90;
-    border-color: #74d3dc90;
+    background-color: var(--accent-color);
+    border-color: var(--accent-color);
   }
 
   #loader {
     border: 32px solid #383838;
-    border-top: 32px solid #74d3dc;
+    border-top: 32px solid var(--accent-color);
   }
 
   .card-body:hover {
