@@ -331,16 +331,18 @@ function prepareForCSV() {
   var dataCSV = [];
   var rowData = $(".parent").children();
   var rowDataCSV = [];
+  var colIndex = 0;
   dataCSV.push(columnNames);
 
   for (var i = 0; i < rowData.length; i++) {
-    if (rowData[i].className === "control sorting_1" || rowData[i].innerText === "Download selected summaries as CSV") {
+    if ($(rowData[i]).hasClass("new-summary")) {
+      dataCSV.push(rowDataCSV.join(","));
+      rowDataCSV = [];
+      colIndex = 0;
       continue;
     }
 
-    if (rowData[i].innerText.trim() === "Print selected summaries") {
-      dataCSV.push(rowDataCSV.join(","));
-      rowDataCSV = [];
+    if (colIndex >= columnNames.length) {
       continue;
     }
 
@@ -350,7 +352,10 @@ function prepareForCSV() {
     } else {
       rowDataCSV.push(text);
     }
+    colIndex++;
   }
+
+  dataCSV.push(rowDataCSV.join(","));
   return dataCSV.join("\n");
 }
 
@@ -383,7 +388,8 @@ function readyForPrinting() {
       colIndex = 0;
       continue;
     }
-    if (rowData[i].innerText.trim() === "Print selected summaries" || rowData[i].innerText.trim() === "Download selected summaries as CSV") {
+
+    if (colIndex >= columnNames.length) {
       continue;
     }
 
