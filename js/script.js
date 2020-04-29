@@ -183,6 +183,13 @@ $(document).ready(function () {
         "lengthMenu": [10, 15, 20, 50, 100, 200],
         "bServerSide": false,
         "bProcessing": true,
+        "drawCallback": function( settings ) {
+          if (getDrawData === false){
+            return;
+          }
+          var api = this.api();
+          console.log( api.rows( {page:'current'} ).data() );
+        },
         "dom": 'Bfrtlip',
         "buttons": [
           {
@@ -274,6 +281,7 @@ $(document).ready(function () {
           table.column(2).search("").draw();
         } else {
           table.column(2).search($(this).find(":selected").val()).draw();
+          console.log(table.column(2).search($(this).find(":selected").val()).data());
         }
       });
 
@@ -290,6 +298,7 @@ $(document).ready(function () {
         }
       });
 
+      getDrawData = true;
       for (var key of urlParams.keys()) {
         if (queryArray.includes(key)) {
           var index = queryArray.indexOf(key);
@@ -314,6 +323,7 @@ $(document).ready(function () {
           table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
         }
       };
+      getDrawData = false;
 
       $("#loader").hide();
       document.getElementById("footer-bottom").classList.remove("stick-to-bottom");
@@ -323,6 +333,7 @@ $(document).ready(function () {
 
 // A fallback in case the browser does not fire print events at the right time
 var printSetupDone = false;
+var getDrawData = false;
 
 // Copy text to clipboard
 function copyToClipboard(obj) {
@@ -338,7 +349,7 @@ function copyToClipboard(obj) {
   $(ele).fadeIn();
   setTimeout(function() {
     $(ele).fadeOut()
-  }, 5000);
+  }, 3000);
 }
 
 function prepareForCSV() {
