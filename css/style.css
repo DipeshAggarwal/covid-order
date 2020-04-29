@@ -381,6 +381,7 @@ select:hover {
 
 .prentend-link {
   color: #007bff;
+  cursor: pointer;
 }
 
 .prentend-link:hover {
