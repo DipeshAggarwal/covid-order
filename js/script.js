@@ -286,9 +286,9 @@ $(document).ready(function () {
 
       $('select#latest-box').on('change', function (e) {
         if ($(this).find(":selected").text() === "Show All Orders") {
-          table.column(26).search("").draw();
+          table.column(25).search("").draw();
         } else if ($(this).find(":selected").text() === "Only Latest Orders") {
-          table.column(26).search("yes").draw();
+          table.column(25).search("yes").draw();
         }
       });
 
@@ -298,7 +298,7 @@ $(document).ready(function () {
       });**/
 
       $('input#date-box').on('change', function (e) {
-        if ($(this).text() === "All Dates") {
+        if ($(this).text() === "Search by Date") {
           table.column(3).search("").draw();
         } else {
           table.column(3).search($(this).val()).draw();
@@ -323,7 +323,7 @@ $(document).ready(function () {
             document.getElementById("date-box").value = valueOfKey;
           } else if (key === "latest") {
             document.getElementById("latest-box").value = "Only Latest Orders";
-            table.column(26).search("yes").draw();
+            table.column(25).search("yes").draw();
           }
         } else if ( !(isNaN(key)) ) {
           var index = parseInt(key);
