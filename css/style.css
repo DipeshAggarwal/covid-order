@@ -231,7 +231,7 @@ select:hover {
   }
 }
 
-@media (prefers-color-scheme: darks) {
+@media (prefers-color-scheme: dark) {
   body, .collapse, .card, .card-body {
     background-color: #121212;
   }
