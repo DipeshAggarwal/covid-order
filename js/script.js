@@ -82,6 +82,12 @@ $(document).ready(function () {
         targets: 0
       });
 
+      columnDefs.push({
+        targets: 25,
+        searchable: true,
+        visible: false
+      })
+
       // Here we separate the data column wise to feed to DataTable
       for (var i = 0; i < columnNames.length; i++) {
         columnObj.push({
