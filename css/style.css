@@ -33,10 +33,10 @@ select, #date-box {
   min-width: 340px;
   margin: auto;
   letter-spacing: .10em;
-  font-size: 26px;
-  font-weight: 600;
+  font-size: 25px;
+  font-weight: 500;
   display: block;
-  color: #fff;
+  color: #000;
   position: relative;
   transition: color .3s .15s ease-in;
   text-align-last: center;
@@ -231,7 +231,7 @@ select:hover {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: darks) {
   body, .collapse, .card, .card-body {
     background-color: #121212;
   }
