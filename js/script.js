@@ -285,9 +285,9 @@ $(document).ready(function () {
       });
 
       $('select#latest-box').on('change', function (e) {
-        if ($(this).find(":selected").text() === "All Orders") {
-          table.column(2).search("").draw();
-        } else {
+        if ($(this).find(":selected").text() === "Show All Orders") {
+          table.column(26).search("").draw();
+        } else if ($(this).find(":selected").text() === "Only Latest Orders") {
           table.column(26).search("yes").draw();
         }
       });
@@ -322,6 +322,7 @@ $(document).ready(function () {
           } else if (key === "date") {
             document.getElementById("date-box").value = valueOfKey;
           } else if (key === "latest") {
+            document.getElementById("latest-box").value = "Only Latest Orders";
             table.column(26).search("yes").draw();
           }
         } else if ( !(isNaN(key)) ) {
