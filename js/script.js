@@ -82,6 +82,7 @@ $(document).ready(function () {
         targets: 0
       });
 
+      // Hide Latest Order column in the sheet
       columnDefs.push({
         targets: 25,
         searchable: true,
@@ -385,7 +386,7 @@ function prepareForCSV() {
       continue;
     }
 
-    if (colIndex >= columnNames.length) {
+    if (colIndex >= columnNames.length-1) {
       continue;
     }
 
@@ -432,7 +433,7 @@ function readyForPrinting() {
       continue;
     }
 
-    if (colIndex >= columnNames.length) {
+    if (colIndex >= columnNames.length-1) {
       continue;
     }
 
