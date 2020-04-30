@@ -60,7 +60,7 @@ $(document).ready(function () {
       }
 
       sheetData.map(function(entry) {
-        var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]].replace("Latest order, ", "").replace("Latest order, ", "") + "&" + queryArray[3] + "=" + entry[columnNames[2]] + "&expand").replace(/ /g, "%20");
+        var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]].replace("Latest order, ", "").replace("Latest order, ", "") + "&" + queryArray[3] + "=" + entry[columnNames[2]] + "&" + queryArray[4] + "=" + entry[columnNames[3]] + "&expand").replace(/ /g, "%20");
         entry["Copy Link to Summary"] = '<div class="prentend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>';
         return entry;
       });
@@ -281,7 +281,14 @@ $(document).ready(function () {
           table.column(2).search("").draw();
         } else {
           table.column(2).search($(this).find(":selected").val()).draw();
-          console.log(table.column(2).search($(this).find(":selected").val()).data());
+        }
+      });
+
+      $('select#latest-box').on('change', function (e) {
+        if ($(this).find(":selected").text() === "All Orders") {
+          table.column(2).search("").draw();
+        } else {
+          table.column(26).search("yes").draw();
         }
       });
 
