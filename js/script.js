@@ -317,10 +317,12 @@ $(document).ready(function () {
 
           if (key === "states") {
             document.getElementById("state-box").value = valueOfKey;
-          } else if (key == "issues") {
+          } else if (key === "issues") {
             document.getElementById("issue-box").value = valueOfKey.split(",")[0];
-          } else if (key == "date") {
+          } else if (key === "date") {
             document.getElementById("date-box").value = valueOfKey;
+          } else if (key === "latest") {
+            table.column(26).search("yes").draw();
           }
         } else if ( !(isNaN(key)) ) {
           var index = parseInt(key);
