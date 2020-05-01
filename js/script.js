@@ -163,7 +163,7 @@ $(document).ready(function () {
               var data = $.map(columns, function (col, i) {
                 // We customise how we want to show the data when the plus sign is clicked
                 if (col.hidden && col.data) {
-                  if (col.data.includes("http") && col.title != "Copy Link to Summary") {
+                  if (col.data.startsWith("http") && col.title != "Copy Link to Summary") {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                       '<td>' + col.title + '</td> ' +
                       '<td class="pdf-link" onClick=window.open("' + col.data + '")><span class="fa fa-external-link">&nbsp;&nbsp;</span>Click to view Order</td>' +
