@@ -16,7 +16,7 @@ $(document).ready(function () {
   });
 
   if (window.location.href.includes("hindi") || window.location.href.includes("Hindi")) {
-    document.getElementById("language-box").value = "Hindi";
+    document.getElementById("language-box").value = "hindi";
   }
 
   var sheetID;
@@ -304,7 +304,7 @@ $(document).ready(function () {
       });
 
       $('select#language-box').on('change', function (e) {
-        if ($(this).find(":selected").text() === "English") {
+        if ($(this).find(":selected").text() === "english") {
           window.location = "https://covid-india.in/";
         } else {
           window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").text() + ".html";
