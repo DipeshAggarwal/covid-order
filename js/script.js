@@ -15,6 +15,10 @@ $(document).ready(function () {
     clearBtn: true
   });
 
+  if (window.location.href.includes("hindi") || window.location.href.includes("Hindi")) {
+    document.getElementById("language-box").value = "Hindi";
+  }
+
   var sheetID;
   var sheetName;
   var pageLength = 10;
@@ -195,7 +199,7 @@ $(document).ready(function () {
             return;
           }
           var api = this.api();
-          console.log( api.rows( {page:'current'} ).data()[0] );
+          //console.log( api.rows( {page:'current'} ).data()[0] );
         },
         "dom": 'Bfrtlip',
         "buttons": [
@@ -303,7 +307,7 @@ $(document).ready(function () {
         if ($(this).find(":selected").text() === "English") {
           window.location = "https://covid-india.in/";
         } else {
-          window.location = "https://covid-india.in/" + $(this).find(":selected").text();
+          window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").text() + ".html";
         }
       });
 
