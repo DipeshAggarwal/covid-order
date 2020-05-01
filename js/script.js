@@ -15,7 +15,7 @@ $(document).ready(function () {
     clearBtn: true
   });
 
-  if (window.location.href.includes("hindi") || window.location.href.includes("Hindi")) {
+  if (window.location.href.includes("hindi") || window.location.href.includes("Hindi") || window.location.href.includes("covid-india.mox") ) {
     document.getElementById("language-box").value = "hindi";
   }
 
