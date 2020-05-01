@@ -20,11 +20,10 @@ $(document).ready(function () {
   }
 
   $('select#language-box').on('change', function (e) {
-    console.log($(this).find(":selected").text());
-    if ($(this).find(":selected").text() === "english") {
+    if ($(this).find(":selected").val() === "english") {
       window.location = "https://covid-india.in/";
     } else {
-      window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").text() + ".html";
+      window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").val() + ".html";
     }
   });
 
