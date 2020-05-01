@@ -15,9 +15,17 @@ $(document).ready(function () {
     clearBtn: true
   });
 
-  if (window.location.href.includes("hindi") || window.location.href.includes("Hindi") || window.location.href.includes("covid-india.mox") ) {
+  if (window.location.href.includes("covid-india.mox") ) {
     document.getElementById("language-box").value = "hindi";
   }
+
+  $('select#language-box').on('change', function (e) {
+    if ($(this).find(":selected").text() === "english") {
+      window.location = "https://covid-india.in/";
+    } else {
+      window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").text() + ".html";
+    }
+  });
 
   var sheetID;
   var sheetName;
@@ -300,14 +308,6 @@ $(document).ready(function () {
           table.column(25).search("").draw();
         } else if ($(this).find(":selected").text() === "Only Latest Orders") {
           table.column(25).search("yes").draw();
-        }
-      });
-
-      $('select#language-box').on('change', function (e) {
-        if ($(this).find(":selected").text() === "english") {
-          window.location = "https://covid-india.in/";
-        } else {
-          window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").text() + ".html";
         }
       });
 
