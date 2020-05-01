@@ -20,10 +20,8 @@ $(document).ready(function () {
   }
 
   $('select#language-box').on('change', function (e) {
-    console.log($(this).find(":selected").val());
     if ($(this).find(":selected").val() === "english") {
-      console.log("here");
-      window.location = "https://covid-india.in/";
+      window.parent.location.href = "https://covid-india.in/";
     } else {
       window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").val() + ".html";
     }
