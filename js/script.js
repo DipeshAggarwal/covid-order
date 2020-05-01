@@ -15,17 +15,20 @@ $(document).ready(function () {
     clearBtn: true
   });
 
-  if (window.location.href.includes("covid-india.mox") ) {
-    document.getElementById("language-box").value = "hindi";
-  }
-
   $('select#language-box').on('change', function (e) {
     if ($(this).find(":selected").val() === "english") {
+      console.log($(this).find(":selected").val());
+      console.log(top.window.location);
       top.window.location = "https://covid-india.in/";
+      console.log(top.window.location);
     } else {
       window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").val() + ".html";
     }
   });
+
+  if (window.location.href.includes("covid-india.mox") ) {
+    document.getElementById("language-box").value = "hindi";
+  }
 
   var sheetID;
   var sheetName;
