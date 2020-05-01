@@ -299,6 +299,14 @@ $(document).ready(function () {
         }
       });
 
+      $('select#language-box').on('change', function (e) {
+        if ($(this).find(":selected").text() === "English") {
+          window.location = "https://covid-india.in/";
+        } else {
+          window.location = "https://covid-india.in/" + $(this).find(":selected").text();
+        }
+      });
+
       /**$('select#colour-box').on('change', function (e) {
         document.documentElement.style.setProperty('--accent-color', $(this).find(":selected").val());
         document.documentElement.style.setProperty('--stripe-color', $(this).find(":selected").val()+"50");
