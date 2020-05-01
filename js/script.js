@@ -19,7 +19,7 @@ $(document).ready(function () {
     if ($(this).find(":selected").val() === "english") {
       console.log($(this).find(":selected").val());
       console.log(top.window.location);
-      top.window.location = "https://covid-indias.in/";
+      top.window.location = "https://www.covid-india.in/";
       console.log(top.window.location);
       console.log("Fault");
     } else {
