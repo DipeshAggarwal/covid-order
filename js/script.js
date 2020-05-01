@@ -19,8 +19,9 @@ $(document).ready(function () {
     if ($(this).find(":selected").val() === "english") {
       console.log($(this).find(":selected").val());
       console.log(top.window.location);
-      top.window.location = "https://covid-india.in/";
+      top.window.location = "https://covid-indias.in/";
       console.log(top.window.location);
+      console.log("Fault");
     } else {
       window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").val() + ".html";
     }
