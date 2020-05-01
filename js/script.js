@@ -20,6 +20,7 @@ $(document).ready(function () {
   }
 
   $('select#language-box').on('change', function (e) {
+    console.log($(this).find(":selected").text());
     if ($(this).find(":selected").text() === "english") {
       window.location = "https://covid-india.in/";
     } else {
