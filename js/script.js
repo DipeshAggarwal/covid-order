@@ -30,6 +30,7 @@ $(document).ready(function () {
   var sheetID;
   var sheetName;
   var pageLength = 10;
+  var experimental = false;
   var columnBreakpoints = ["meddesktop", "meddesktop", "tabletp", "mobilel", "mobilep"];
   const urlParams = new URLSearchParams(window.location.search);
   queryArray = [""];
@@ -163,6 +164,16 @@ $(document).ready(function () {
         "data": null,
         "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsCSV(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download selected summaries as CSV</a>'
       });
+
+      if (experimental === true) {
+        // Add a Download As Image Column
+        $("#firstRow").append('<th class="none not-print">Download Image</th>');
+        columnObj.push({
+          "orderable": false,
+          "data": null,
+          "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsImage(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download this Order as an Image</a>'
+        });
+      }
 
       //$("#updated-on").html("The data was last updated on <b>" + new Date(data[sheetName].raw.feed.updated.$t) + "</b>");
 
@@ -350,7 +361,7 @@ $(document).ready(function () {
             valueOfKey = urlParams.get(key);
             table.column(index).search(valueOfKey).draw();
           }
-        } else  if (key == "expand") {
+        } else if (key === "expand") {
           table.rows(':not(.parent)').nodes().to$().find('td:first-child').trigger('click');
         }
       };
@@ -381,6 +392,10 @@ function copyToClipboard(obj) {
   setTimeout(function() {
     $(ele).fadeOut()
   }, 3000);
+}
+
+function downloadOrderAsImage(obj) {
+  var rowData = $(obj).parents(".child").last().prevAll(".parent");
 }
 
 function prepareForCSV() {
