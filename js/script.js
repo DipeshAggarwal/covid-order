@@ -38,15 +38,19 @@ $(document).ready(function () {
   // Check if a custom sheet query is provided
   if (urlParams.get("sheet")) {
     sheetID = urlParams.get("sheet");
-  } else {
+  } else if (customField === true) {
     sheetID = "1rl7i49pGlUlldXX58ltwSmryKvEfZzKWetuIF8_OvQA";
+  } else {
+    sheetID = "1CEfWN7uAIkxM1M7n62HDAsFLHURWoce27MPYbiWmXtw";
   };
 
   // Check if a custom worksheet query is provided
   if (urlParams.get("page")) {
     sheetName = urlParams.get("page");
-  } else {
+  } else if (customField === true) {
     sheetName = "Orders";
+  } else {
+    sheetName = "TravelProcess_All";
   };
 
   // If a length query is given, show that many entries per page
@@ -78,29 +82,33 @@ $(document).ready(function () {
         return entry;
       });
 
-      var columnObj = [{
-        "orderable": false,
-        "data": null,
-        "defaultContent": ''
-      }];
-      var columnDefs = [{
-        "width": "5%",
-        "targets": 0
-      }];
+      if (customField === true) {
+        var columnObj = [{
+          "orderable": false,
+          "data": null,
+          "defaultContent": ''
+        }];
+        var columnDefs = [{
+          "width": "5%",
+          "targets": 0
+        }];
+        // This is the first column which has the expand button
+        columnDefs.push({
+          className: 'control new-summary',
+          orderable: false,
+          targets: 0
+        });
 
-      // This is the first column which has the expand button
-      columnDefs.push({
-        className: 'control new-summary',
-        orderable: false,
-        targets: 0
-      });
-
-      // Hide Latest Order column in the sheet
-      columnDefs.push({
-        targets: 25,
-        searchable: true,
-        visible: false
-      })
+        // Hide Latest Order column in the sheet
+        columnDefs.push({
+          targets: 25,
+          searchable: true,
+          visible: false
+        })
+      } else {
+        var columnObj = [];
+        var columnDefs = []; 
+      }
 
       // Here we separate the data column wise to feed to DataTable
       for (var i = 0; i < columnNames.length; i++) {
@@ -143,36 +151,38 @@ $(document).ready(function () {
         }
       };
 
-      // Manually add the generated summary link button
-      columnObj.push({
-        "mDataProp": "Copy Link to Summary"
-      });
-      $("#firstRow").append('<th class="none">Copy Link to Summary</th>');
+      if (customField === true) {
+        // Manually add the generated summary link button
+        columnObj.push({
+          "mDataProp": "Copy Link to Summary"
+        });
+        $("#firstRow").append('<th class="none">Copy Link to Summary</th>');
 
-      // Add a Print Column
-      $("#firstRow").append('<th class="none not-print">Print</th>');
-      columnObj.push({
-        "orderable": false,
-        "data": null,
-        "defaultContent": '<a href="#" class="not-print" onClick="printOrder();"><span class="fa fa-print">&nbsp;&nbsp;</span>Print selected summaries</a>'
-      });
-
-      // Add a Download Column
-      $("#firstRow").append('<th class="none not-print">Download</th>');
-      columnObj.push({
-        "orderable": false,
-        "data": null,
-        "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsCSV(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download selected summaries as CSV</a>'
-      });
-
-      if (experimental === true) {
-        // Add a Download As Image Column
-        $("#firstRow").append('<th class="none not-print">Download Image</th>');
+        // Add a Print Column
+        $("#firstRow").append('<th class="none not-print">Print</th>');
         columnObj.push({
           "orderable": false,
           "data": null,
-          "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsImage(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download this Order as an Image</a>'
+          "defaultContent": '<a href="#" class="not-print" onClick="printOrder();"><span class="fa fa-print">&nbsp;&nbsp;</span>Print selected summaries</a>'
         });
+
+        // Add a Download Column
+        $("#firstRow").append('<th class="none not-print">Download</th>');
+        columnObj.push({
+          "orderable": false,
+          "data": null,
+          "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsCSV(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download selected summaries as CSV</a>'
+        });
+
+        if (experimental === true) {
+          // Add a Download As Image Column
+          $("#firstRow").append('<th class="none not-print">Download Image</th>');
+          columnObj.push({
+            "orderable": false,
+            "data": null,
+            "defaultContent": '<a href="#" class="not-print" onClick="downloadOrderAsImage(this);"><span class="fa fa-download">&nbsp;&nbsp;</span>Download this Order as an Image</a>'
+          });
+        }
       }
 
       //$("#updated-on").html("The data was last updated on <b>" + new Date(data[sheetName].raw.feed.updated.$t) + "</b>");
@@ -282,6 +292,10 @@ $(document).ready(function () {
           }
         ],
         "fnCreatedRow": function (nRow, aData, iDataIndex) {
+          if (customField === false) {
+            return;
+          }
+
           var value = aData[columnObj[1].mDataProp].replace(/\s+/g, ' ').replace(/'/g, "\\'").trim();
           if ($("#state-box option[value='" + value + "']").length == 0) {
             $('<option/>').val(value).html(value).appendTo('#state-box');
@@ -298,42 +312,44 @@ $(document).ready(function () {
         }
       });
 
-      $('select#state-box').on('change', function (e) {
-        if ($(this).find(":selected").text() === "All State") {
-          table.column(1).search("\\*\\", true, false).draw();
-        } else {
-          table.column(1).search($(this).find(":selected").val()).draw();
-        }
-      });
+      if (customField === true) {
+        $('select#state-box').on('change', function (e) {
+          if ($(this).find(":selected").text() === "All State") {
+            table.column(1).search("\\*\\", true, false).draw();
+          } else {
+            table.column(1).search($(this).find(":selected").val()).draw();
+          }
+        });
 
-      $('select#issue-box').on('change', function (e) {
-        if ($(this).find(":selected").text() === "All Issues") {
-          table.column(2).search("").draw();
-        } else {
-          table.column(2).search($(this).find(":selected").val()).draw();
-        }
-      });
+        $('select#issue-box').on('change', function (e) {
+          if ($(this).find(":selected").text() === "All Issues") {
+            table.column(2).search("").draw();
+          } else {
+            table.column(2).search($(this).find(":selected").val()).draw();
+          }
+        });
 
-      $('select#latest-box').on('change', function (e) {
-        if ($(this).find(":selected").text() === "Show All Orders") {
-          table.column(25).search("").draw();
-        } else if ($(this).find(":selected").text() === "Only Latest Orders") {
-          table.column(25).search("yes").draw();
-        }
-      });
+        $('select#latest-box').on('change', function (e) {
+          if ($(this).find(":selected").text() === "Show All Orders") {
+            table.column(25).search("").draw();
+          } else if ($(this).find(":selected").text() === "Only Latest Orders") {
+            table.column(25).search("yes").draw();
+          }
+        });
 
-      /**$('select#colour-box').on('change', function (e) {
-        document.documentElement.style.setProperty('--accent-color', $(this).find(":selected").val());
-        document.documentElement.style.setProperty('--stripe-color', $(this).find(":selected").val()+"50");
-      });**/
+        /**$('select#colour-box').on('change', function (e) {
+          document.documentElement.style.setProperty('--accent-color', $(this).find(":selected").val());
+          document.documentElement.style.setProperty('--stripe-color', $(this).find(":selected").val()+"50");
+        });**/
 
-      $('input#date-box').on('change', function (e) {
-        if ($(this).text() === "Search by Date") {
-          table.column(3).search("").draw();
-        } else {
-          table.column(3).search($(this).val()).draw();
-        }
-      });
+        $('input#date-box').on('change', function (e) {
+          if ($(this).text() === "Search by Date") {
+            table.column(3).search("").draw();
+          } else {
+            table.column(3).search($(this).val()).draw();
+          }
+        });
+      }
 
       for (var key of urlParams.keys()) {
         if (key === "date") {
@@ -376,6 +392,12 @@ $(document).ready(function () {
 // A fallback in case the browser does not fire print events at the right time
 var printSetupDone = false;
 var getDrawData = false;
+
+if (window.location.href.includes("stranded-workers")) {
+  var customField = false;
+} else {
+  var customField = true;
+}
 
 // Copy text to clipboard
 function copyToClipboard(obj) {
