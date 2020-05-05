@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="COVID INDIA Social Security and other welfare and justice measures tracker." />
+    <meta name="keywords" content="covid, coronavirus, india, government, order, tracker" />
+    <meta name="author" content="Dipesh Aggarwal" />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@COVIDIndiaTrack">
+    <meta name="twitter:creator" content="@COVIDIndiaTrack">
+    <meta property="og:title" content="COVID-19 Government Order Tracker">
+    <meta property="og:description" content="COVID INDIA Social Security and other welfare and justice measures tracker.">
+    <meta property="og:image" content="https://covid-india.in/image.png">
+    <meta property="og:url" content="https://covid-india.in/">
+    <title>COVID-19 Government Order Tracker</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <!--script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NCCGLW8');</script -->
+
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.css"/>
+    <link id="bsdp-css" rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <link rel="stylesheet" type="text/css" href="css/theme.css">
+
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tabletop@1.6.2/src/tabletop.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="js/script.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container-lg">
+        <span class="navbar-brand h3 m-0">COVID-19 | Government Orders Tracker</span>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav ml-auto">
+            <li class="dropdown" style="margin-right:10px">
+              <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Who are we?</a>
+                <a class="dropdown-item" href="#">Get in touch</a>
+                <a class="dropdown-item" href="#">Volunteer with us</a>
+                <div role="separator" class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Disclaimer</a>
+              </div>
+            </li>
+            <li><div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-outline-light active">
+                <input type="radio" name="options" id="option1" checked> English
+              </label>
+              <label class="btn btn-outline-light">
+                <input type="radio" name="options" id="option2"> हिंदी
+              </label>
+
+            </div></li>
+          </ul>
+        </div>
+
+      </div>
+
+    </nav>
+    <div class="jumbotron jumbotron-fluid bg-primary text-light">
+      <div class="container">
+        <div class="row align-items-center clearfix">
+          <div class="col-md-9">
+            <h2>Short headline about this website</h2>
+            <p>This is some instructional text that tells the user how to use the form below and what all to expect as search results.</p>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-outline-light mx-auto d-block" style="width:120px" data-toggle="modal" data-target="#claimModal"><i class="fa fa-exclamation-circle"></i> Disclaimer</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <div class="container">
+      <div class="row mt-5">
+        <form>
+          <div class="form-row form-group">
+            <div class="col-5">
+              <label><i class="fa fa-university"></i> Select State/Authority</label>
+              <select class="custom-select">
+                <option>Central Government</option>
+                <option>Andaman and Nicobar Islands</option>
+                <option>Andhra Pradesh</option>
+                <option>Assam</option>
+              </select>
+            </div>
+            <div class="col-4">
+              <label><i class="fa fa-list-alt"></i> Select Issue</label>
+              <select class="custom-select">
+                <option>All Issues</option>
+                <option>Migrant</option>
+                <option>Food</option>
+              </select>
+            </div>
+            <div class="col-3">
+              <label><i class="fa fa-calendar-alt"></i> Search by Date</label><br>
+              <div class="btn-group d-block" role="group">
+                <button type="button" class="btn btn-outline-dark">From date</button>
+                <button type="button" class="btn btn-outline-dark">To date</button>
+              </div>
+            </div>
+          </div>
+          <div class="row form-group">
+            <div class="col-auto border-right">
+              <label>Results:</label>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio1" name="result-list" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio1">Show all</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio2" name="result-list" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio2">Only latest</label>
+              </div>
+            </div>
+            <div class="col-auto border-right">
+              <label>Expand all summaries?</label>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio3" name="summaries" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio3">Yes</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadio4" name="summaries" class="custom-control-input">
+                <label class="custom-control-label" for="customRadio4">No</label>
+              </div>
+            </div>
+            <div class="col-auto">
+              <select class="custom-select custom-select-sm">
+                <option>Show 5 per page</option>
+                <option>Show 10 per page</option>
+                <option>Show 20 per page</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row mt-5">
+        <div class="table-responsive">
+          <table class="table table-hover table-bordered">
+            <thead class="bg-info">
+              <tr class="clearfix">
+                <th scope="col">#</th>
+                <th scope="col" class="align-middle">Authority <i class="fa fa-sort text-primary float-right"></i></th>
+                <th scope="col">Issues</th>
+                <th scope="col">Date</th>
+                <th scope="col">Announced by</th>
+                <th scope="col">Source</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Uttar Pradesh</td>
+                <td>Food, Migrant, Workers</td>
+                <td>14/04/2020</td>
+                <td>Health Directorate</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row">2</th>
+                <td>Uttar Pradesh</td>
+                <td>Food, Migrant, Workers</td>
+                <td>14/04/2020</td>
+                <td>Health Directorate</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row">3</th>
+                <td>Uttar Pradesh</td>
+                <td>Food, Migrant, Workers</td>
+                <td>14/04/2020</td>
+                <td>Health Directorate</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row">4</th>
+                <td>Gujarat</td>
+                <td>Education, Food</td>
+                <td>24/04/2020</td>
+                <td>Ministry of Education</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row">5</th>
+                <td>Gujarat</td>
+                <td>Education, Food</td>
+                <td>24/04/2020</td>
+                <td>Ministry of Education</td>
+                <td>Order</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <nav aria-label="Results pagination">
+            <ul class="pagination">
+              <li class="page-item disabled">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true"><i class="fa fa-caret-left"></i></span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link text-primary" href="#">1</a></li>
+              <li class="page-item"><a class="page-link text-primary" href="#">2</a></li>
+              <li class="page-item"><a class="page-link text-primary" href="#">3</a></li>
+              <li class="page-item"><a class="page-link text-primary" href="#">4</a></li>
+              <li class="page-item"><a class="page-link text-primary" href="#">5</a></li>
+              <li class="page-item">
+                <a class="page-link text-primary" href="#" aria-label="Next">
+                  <span aria-hidden="true"><i class="fa fa-caret-right"></i></span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+        <div class="col-md-4">
+          <p class="text-right">Showing 5 of 32 results</p>
+        </div>
+
+      </div>
+    </div>
+    <footer class="container-fluid mt-5">
+      <div class="row bg-secondary justify-content-center">
+        <div class="col-6 p-3 text-center">
+          <p>Is something not right? You can <a href="#" type="link">contribute!</a></p>
+          <p>Copyleft 2020</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="claimModal" tabindex="-1" role="dialog" aria-labelledby="claimModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="claimModalLabel">Disclaimer</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            This web portal only lists the various Government orders/notifications/circulars/notices, issued by various State Govt.’s and Central Govt. issued from time to time in relation to COVID-19 and is hosted here only for purposes of general public awareness, information and research. The web portal does not undertake any responsibility of the correctness or truthfulness of the contents of these govt. orders. Visitors are advised to visit the respective official govt. department to verify the information provided in such orders/notifications/circulars/notices.
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">I understand</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
