@@ -65,6 +65,8 @@ $(document).ready(function () {
     url: "https://script.google.com/macros/s/AKfycby7AOxVGZUKTBUgTtPO5TGnudMAEUx9IdXeWE1rjgwjeIDGhcc/exec",
   })
     .done(function( data ) {
+      adminData = data.admin;
+      data = data.websiteData;
       columnNames = data.shift();
       sheetData = data.map(function (a) {
         return a.reduce(function (o, d, i) {
