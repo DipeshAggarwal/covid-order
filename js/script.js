@@ -68,12 +68,7 @@ $(document).ready(function () {
       adminData = data.admin;
       data = data.websiteData;
       columnNames = data.shift();
-      sheetData = data.map(function (a) {
-        return a.reduce(function (o, d, i) {
-            o[columnNames[i]] = d;
-            return o;
-        }, {});
-      });
+      sheetData = data;
 
       // This block generates accepted query strings from the column names.
       // We set all the column case to lower case and use the first word of
@@ -84,9 +79,8 @@ $(document).ready(function () {
       }
 
       sheetData.map(function(entry) {
-        var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[columnNames[0]] + "&" + queryArray[2] + "=" + entry[columnNames[1]].replace("Latest order, ", "").replace("Latest order, ", "") + "&" + queryArray[3] + "=" + entry[columnNames[2]] + "&" + queryArray[4] + "=" + entry[columnNames[3]] + "&expand").replace(/ /g, "%20");
-        entry["Copy Link to Summary"] = '<div class="prentend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>';
-        return entry;
+        var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[0] + "&" + queryArray[2] + "=" + entry[1].replace("Latest order, ", "").replace("Latest order, ", "") + "&" + queryArray[3] + "=" + entry[2] + "&" + queryArray[4] + "=" + entry[3] + "&expand").replace(/ /g, "%20");
+        return entry.push('<div class="prentend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>');
       });
 
       if (customField === true) {
@@ -120,7 +114,7 @@ $(document).ready(function () {
       // Here we separate the data column wise to feed to DataTable
       for (var i = 0; i < columnNames.length; i++) {
         columnObj.push({
-          "mDataProp": columnNames[i]
+          "mDataProp": i
         });
 
         // The first five columns are given fixed width
@@ -172,7 +166,7 @@ $(document).ready(function () {
       if (customField === true) {
         // Manually add the generated summary link button
         columnObj.push({
-          "mDataProp": "Copy Link to Summary"
+          "mDataProp": columnNames.length
         });
         $("#firstRow").append('<th class="none">Copy Link to Summary</th>');
 
