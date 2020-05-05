@@ -61,12 +61,17 @@ $(document).ready(function () {
     }
   };
 
-  Tabletop.init({
-      key: sheetID
-    })
-    .then(function (data, tabletop) {
-      columnNames = data[sheetName].columnNames;
-      sheetData = data[sheetName].elements;
+  $.ajax({
+    url: "https://script.google.com/macros/s/AKfycby7AOxVGZUKTBUgTtPO5TGnudMAEUx9IdXeWE1rjgwjeIDGhcc/exec",
+  })
+    .done(function( data ) {
+      columnNames = data.shift();
+      sheetData = data.map(function (a) {
+        return a.reduce(function (o, d, i) {
+            o[columnNames[i]] = d;
+            return o;
+        }, {});
+      });
 
       // This block generates accepted query strings from the column names.
       // We set all the column case to lower case and use the first word of
@@ -118,12 +123,7 @@ $(document).ready(function () {
 
         // The first five columns are given fixed width
         if (i < 6) {
-          if (i === 3 || i === 5) {
-            columnDefs.push({
-              "width": "12%",
-              "targets": i
-            });
-          } else if ( i === 1) {
+          if ( i === 1) {
             columnDefs.push({
               "width": "20%",
               "targets": i
@@ -131,6 +131,22 @@ $(document).ready(function () {
           } else if ( i === 2) {
             columnDefs.push({
               "width": "20%",
+              "targets": i
+            });
+          } else if (i === 3) {
+            columnDefs.push({
+              "width": "12%",
+              "targets": i,
+              "type": "date",
+              "render": function (data, type, row) {
+                var date = new Date(data);
+                var month = date.getMonth() + 1;
+                return ("0" + date.getDate()).slice(-2) + "/" + ("0" + month).slice(-2) + "/" + date.getUTCFullYear();
+              },
+            });
+          } else if (i === 5) {
+            columnDefs.push({
+              "width": "12%",
               "targets": i
             });
           } else {
@@ -289,8 +305,7 @@ $(document).ready(function () {
           {
             name: 'mobilep',
             width: 320
-          }
-        ],
+        }],
         "fnCreatedRow": function (nRow, aData, iDataIndex) {
           if (customField === false) {
             return;
