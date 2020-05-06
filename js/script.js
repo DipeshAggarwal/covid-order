@@ -79,6 +79,12 @@ $(document).ready(function () {
       }
 
       sheetData.map(function(entry) {
+        if (entry[2] != false) {
+            var date = new Date(entry[2]);
+            var month = date.getMonth() + 1;
+            entry[2] = ("0" + date.getDate()).slice(-2) + "/" + ("0" + month).slice(-2) + "/" + date.getUTCFullYear();
+        }
+        
         var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[0] + "&" + queryArray[2] + "=" + entry[1].replace("Latest order, ", "").replace("Latest order, ", "") + "&" + queryArray[3] + "=" + entry[2] + "&" + queryArray[4] + "=" + entry[3] + "&expand").replace(/ /g, "%20");
         return entry.push('<div class="prentend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>');
       });
@@ -133,12 +139,6 @@ $(document).ready(function () {
             columnDefs.push({
               "width": "12%",
               "targets": i,
-              "type": "date",
-              "render": function (data, type, row) {
-                var date = new Date(data);
-                var month = date.getMonth() + 1;
-                return ("0" + date.getDate()).slice(-2) + "/" + ("0" + month).slice(-2) + "/" + date.getUTCFullYear();
-              },
             });
           } else if (i === 5) {
             columnDefs.push({
