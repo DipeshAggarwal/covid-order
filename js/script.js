@@ -248,7 +248,7 @@ $(document).ready(function () {
             text: 'Expand All Summaries',
             className: "shift-down not-print",
             attr: {
-              style: "margin-bottom:-45px;"
+              style: "margin-bottom:-40px;"
             },
             action: function ( e, dt, node, config ) {
               if (table.rows('.parent').nodes().to$().find('td:first-child').trigger('click').length === 0) {
@@ -257,6 +257,16 @@ $(document).ready(function () {
               } else {
                 this.text("Expand All Summaries");
               }
+            }
+          },
+          {
+            text: '<b>NEW: Migrants Travel Info</b>',
+            className: "shift-down not-print",
+            attr: {
+              style: "margin-bottom:-40px;margin-left:25px;"
+            },
+            action: function ( e, dt, node, config ) {
+              window.location.href = "https://migrants.covid-india.in";
             }
           }
         ],
