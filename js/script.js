@@ -260,7 +260,7 @@ $(document).ready(function () {
             }
           },
           {
-            text: '<b>NEW: Migrants Travel Info</b>',
+            text: '<i class="fa fa-train" aria-hidden="true"></i> <b>Migrants Travel Info</b>',
             className: "shift-down not-print",
             attr: {
               style: "margin-bottom:-40px;margin-left:25px;"
