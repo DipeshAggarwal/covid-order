@@ -20,6 +20,7 @@ $(document).ready(function () {
       top.window.location = "https://www.covid-india.in/";
     } else {
       window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").val() + ".html";
+      /*window.location = "https://www.covid-india.in/translate.html?" + $(this).find(":selected").val();*/
     }
   });
 
@@ -372,6 +373,18 @@ $(document).ready(function () {
         });
       }
 
+      $('#show-all-btn').on('click', function (e) {
+          document.getElementById("state-box").value = "";
+          document.getElementById("issue-box").value = "";
+          document.getElementById("date-box").value = "";
+          table.column(1).search("").draw();
+          table.column(2).search("").draw();
+          table.column(3).search("").draw();
+          table.column(4).search("").draw();
+          $(this).hide();
+      });
+
+      var showAllButtonCounter = 0;
       for (var key of urlParams.keys()) {
         if (key === "date") {
           getDrawData = true;
@@ -382,12 +395,15 @@ $(document).ready(function () {
 
           table.column(index).search(valueOfKey).draw();
 
-          if (key === "states") {
+          if (key === "state") {
             document.getElementById("state-box").value = valueOfKey;
+            showAllButtonCounter++;
           } else if (key === "issues") {
             document.getElementById("issue-box").value = valueOfKey.split(",")[0];
+            showAllButtonCounter++;
           } else if (key === "date") {
             document.getElementById("date-box").value = valueOfKey;
+            showAllButtonCounter++;
           } else if (key === "latest") {
             document.getElementById("latest-box").value = "Only Latest Orders";
             table.column(25).search("yes").draw();
@@ -403,6 +419,10 @@ $(document).ready(function () {
         }
       };
       getDrawData = false;
+
+      if (showAllButtonCounter > 2) {
+        $("#show-all-btn").show();
+      }
 
       $("#loader").hide();
       document.getElementById("footer-bottom").classList.remove("stick-to-bottom");
