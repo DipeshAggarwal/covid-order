@@ -64,6 +64,8 @@ $(document).ready(function () {
 
   $.ajax({
     url: "https://script.google.com/macros/s/AKfycby7AOxVGZUKTBUgTtPO5TGnudMAEUx9IdXeWE1rjgwjeIDGhcc/exec",
+    type: "GET",
+    dataType: "json"
   })
     .done(function( data ) {
       adminData = data.admin;
