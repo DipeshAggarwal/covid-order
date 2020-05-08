@@ -22,8 +22,12 @@
     var title = {
       "hindi": "COVID-19 सरकारी ऑर्डर ट्रैकर"
     }
-    var prefix = location.href.split("?")[1];
-    document.title = title[prefix];
-    document.getElementById('translate').src = "https://" + prefix + "-covid-india.mox.net.in/";
+    var prefix = location.href.split("#")[1];
+    //document.title = title[prefix];
+    if (prefix === "hindi") {
+      document.getElementById('translate').src = "https://covid-india.mox.net.in" + window.location.search;
+    } else {
+      document.getElementById('translate').src = "https://" + prefix + "-covid-india.mox.net.in" + window.location.search;
+    }
   </script>
 </html>

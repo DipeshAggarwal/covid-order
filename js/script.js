@@ -19,7 +19,7 @@ $(document).ready(function () {
     if ($(this).find(":selected").val() === "english") {
       top.window.location = "https://www.covid-india.in/";
     } else {
-      window.location = window.location.href.replace("index.html", "").replace("index", "") + $(this).find(":selected").val() + ".html";
+      window.location = "https://www.covid-india.in/translate.html#" + $(this).find(":selected").val();
       /*window.location = "https://www.covid-india.in/translate.html?" + $(this).find(":selected").val();*/
     }
   });
