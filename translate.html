@@ -29,5 +29,8 @@
     } else {
       document.getElementById('translate').src = "https://" + prefix + "-covid-india.mox.net.in" + window.location.search;
     }
+    window.onhashchange = function() {
+      window.location.reload();
+    }
   </script>
 </html>

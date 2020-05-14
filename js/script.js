@@ -19,7 +19,7 @@ $(document).ready(function () {
     if ($(this).find(":selected").val() === "english") {
       top.window.location = "https://www.covid-india.in/";
     } else {
-      window.location = "https://www.covid-india.in/translate.html#" + $(this).find(":selected").val();
+      top.window.location = "https://www.covid-india.in/translate.html#" + $(this).find(":selected").val();
       /*window.location = "https://www.covid-india.in/translate.html?" + $(this).find(":selected").val();*/
     }
   });
@@ -219,7 +219,7 @@ $(document).ready(function () {
                   } else {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                       '<td>' + col.title + ':' + '</td> ' +
-                      '<td style="white-space:initial;">' + col.data + '</td>' +
+                      '<td style="white-space:initial;">' + col.data.replace(new RegExp("\n", 'g'), "<br />") + '</td>' +
                       '</tr>';
                   }
                 } else {
