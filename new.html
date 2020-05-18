@@ -24,9 +24,9 @@
     <link id="bsdp-css" rel="stylesheet" type="text/css" href="https://unpkg.com/bootstrap-datepicker@1.9.0/dist/css/bootstrap-datepicker3.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <!--link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"-->
 
-    <link rel="stylesheet" type="text/css" href="css/theme.css">
+    <link rel="stylesheet" type="text/css" href="css/theme.min.css">
 
 
 
@@ -36,9 +36,11 @@
     <script type="text/javascript" charset="utf8" src="js/script.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
+
   <body>
+<!-- HEADER NAVIGATION -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-      <div class="container-lg">
+      <div class="container">
         <span class="navbar-brand h3 m-0">COVID-19 | Government Orders Tracker</span>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,21 +59,20 @@
                 <a class="dropdown-item" href="#">Disclaimer</a>
               </div>
             </li>
-            <li><div class="btn-group btn-group-toggle" data-toggle="buttons">
-              <label class="btn btn-outline-light active">
-                <input type="radio" name="options" id="option1" checked> English
-              </label>
-              <label class="btn btn-outline-light">
-                <input type="radio" name="options" id="option2"> हिंदी
-              </label>
-
-            </div></li>
+            <li class="dropdown">
+              <button class="btn btn-light dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-globe"></i> En</button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">English</a>
+                <a class="dropdown-item" href="#">हिंदी</a>
+              </div>
+            </li>
           </ul>
         </div>
 
       </div>
 
     </nav>
+<!-- MAIN BANNER -->
     <div class="jumbotron jumbotron-fluid bg-primary text-light">
       <div class="container">
         <div class="row align-items-center clearfix">
@@ -80,12 +81,13 @@
             <p>This is some instructional text that tells the user how to use the form below and what all to expect as search results.</p>
           </div>
           <div class="col-md-3">
-            <button class="btn btn-outline-light mx-auto d-block" style="width:120px" data-toggle="modal" data-target="#claimModal"><i class="fa fa-exclamation-circle"></i> Disclaimer</button>
+            <button class="btn btn-outline-light mx-auto d-block"><i class="fa fa-train"></i> Migrants Travel Info</button>
           </div>
         </div>
 
       </div>
     </div>
+<!-- SEARCH FORM -->
     <div class="container">
       <div class="row mt-5">
         <form>
@@ -148,12 +150,15 @@
           </div>
         </form>
       </div>
+    </div>
+<!-- SEARCH RESULTS -->
+    <div class="container-fluid px-5">
       <div class="row mt-5">
         <div class="table-responsive">
           <table class="table table-hover table-bordered">
             <thead class="bg-info">
               <tr class="clearfix">
-                <th scope="col">#</th>
+                <th scope="col"></th>
                 <th scope="col" class="align-middle">Authority <i class="fa fa-sort text-primary float-right"></i></th>
                 <th scope="col">Issues</th>
                 <th scope="col">Date</th>
@@ -163,7 +168,7 @@
             </thead>
             <tbody>
               <tr>
-                <th scope="row">1</th>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
                 <td>Uttar Pradesh</td>
                 <td>Food, Migrant, Workers</td>
                 <td>14/04/2020</td>
@@ -171,7 +176,7 @@
                 <td>Order</td>
               </tr>
               <tr>
-                <th scope="row">2</th>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
                 <td>Uttar Pradesh</td>
                 <td>Food, Migrant, Workers</td>
                 <td>14/04/2020</td>
@@ -179,7 +184,7 @@
                 <td>Order</td>
               </tr>
               <tr>
-                <th scope="row">3</th>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
                 <td>Uttar Pradesh</td>
                 <td>Food, Migrant, Workers</td>
                 <td>14/04/2020</td>
@@ -187,7 +192,7 @@
                 <td>Order</td>
               </tr>
               <tr>
-                <th scope="row">4</th>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
                 <td>Gujarat</td>
                 <td>Education, Food</td>
                 <td>24/04/2020</td>
@@ -195,9 +200,49 @@
                 <td>Order</td>
               </tr>
               <tr>
-                <th scope="row">5</th>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
                 <td>Gujarat</td>
                 <td>Education, Food</td>
+                <td>24/04/2020</td>
+                <td>Ministry of Education</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
+                <td>Maharashtra</td>
+                <td>Education, Food</td>
+                <td>24/04/2020</td>
+                <td>Ministry of Education</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
+                <td>Gujarat</td>
+                <td>Education, Food</td>
+                <td>24/04/2020</td>
+                <td>Ministry of Education</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
+                <td>Maharashtra</td>
+                <td>Education</td>
+                <td>24/04/2020</td>
+                <td>Ministry of Education</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
+                <td>Tamil Nadu</td>
+                <td>Education, Food</td>
+                <td>24/04/2020</td>
+                <td>Ministry of Education</td>
+                <td>Order</td>
+              </tr>
+              <tr>
+                <th scope="row"><i class="fa fa-plus-square"></i></th>
+                <td>Tamil Nadu</td>
+                <td>Food</td>
                 <td>24/04/2020</td>
                 <td>Ministry of Education</td>
                 <td>Order</td>
@@ -229,15 +274,16 @@
           </nav>
         </div>
         <div class="col-md-4">
-          <p class="text-right">Showing 5 of 32 results</p>
+          <p class="text-right">Showing 10 of 32 results</p>
         </div>
-
       </div>
     </div>
+<!-- FOOTER -->
     <footer class="container-fluid mt-5">
       <div class="row bg-secondary justify-content-center">
         <div class="col-6 p-3 text-center">
-          <p>Is something not right? You can <a href="#" type="link">contribute!</a></p>
+          <button class="btn btn-dark mx-auto d-block" style="width:120px" data-toggle="modal" data-target="#claimModal"><i class="fa fa-exclamation-circle"></i> Disclaimer</button>
+          <p class="mt-3">Is something not right You can <a href="#" type="link">contribute!</a></p>
           <p>Copyleft 2020</p>
         </div>
       </div>
