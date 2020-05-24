@@ -1,6 +1,11 @@
 :root {
-  --accent-color: #da534f;
-  --stripe-color: #da534f50;
+  --accent-color: #00b32d;
+  --stripe-color: #00ff8050;
+}
+
+body {
+  background: rgb(227,255,231);
+  background: linear-gradient(90deg, rgba(227,255,231,1) 0%, rgba(222,244,242,1) 33%, rgba(222,244,242,1) 66%, rgba(217,231,255,1) 100%);
 }
 
 .horz-center {
@@ -16,6 +21,7 @@
 
 h1 {
   font-size: 3.8em;
+  color: #001f3f;
 }
 
 .pdf-link {
@@ -269,7 +275,7 @@ select:hover {
   }
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: darks) {
   body, .collapse, .card, .card-body {
     background-color: #121212;
   }
