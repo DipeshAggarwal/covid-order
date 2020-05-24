@@ -142,6 +142,7 @@ $(document).ready(function () {
             columnDefs.push({
               "width": "12%",
               "targets": i,
+              "type": 'date-uk'
             });
           } else if (i === 5) {
             columnDefs.push({
