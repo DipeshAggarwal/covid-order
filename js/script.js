@@ -115,6 +115,13 @@ $(document).ready(function () {
           searchable: true,
           visible: false
         })
+
+        // Hide Order Allocation column in the sheet
+        columnDefs.push({
+          targets: 26,
+          searchable: false,
+          visible: false
+        })
       } else {
         var columnObj = [];
         var columnDefs = []; 
