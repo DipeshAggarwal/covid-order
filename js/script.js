@@ -24,35 +24,12 @@ $(document).ready(function () {
     }
   });
 
-  if (window.location.href.includes("covid-india.mox") ) {
-    document.getElementById("language-box").value = "hindi";
-  }
-
-  var sheetID;
-  var sheetName;
+  var scriptQuery = "";
   var pageLength = 10;
   var experimental = false;
   var columnBreakpoints = ["meddesktop", "meddesktop", "tabletp", "mobilel", "mobilep"];
   const urlParams = new URLSearchParams(window.location.search);
   queryArray = [""];
-
-  // Check if a custom sheet query is provided
-  if (urlParams.get("sheet")) {
-    sheetID = urlParams.get("sheet");
-  } else if (customField === true) {
-    sheetID = "1rl7i49pGlUlldXX58ltwSmryKvEfZzKWetuIF8_OvQA";
-  } else {
-    sheetID = "1CEfWN7uAIkxM1M7n62HDAsFLHURWoce27MPYbiWmXtw";
-  };
-
-  // Check if a custom worksheet query is provided
-  if (urlParams.get("page")) {
-    sheetName = urlParams.get("page");
-  } else if (customField === true) {
-    sheetName = "Orders";
-  } else {
-    sheetName = "TravelProcess_All";
-  };
 
   // If a length query is given, show that many entries per page
   if (urlParams.get("length")) {
@@ -62,8 +39,22 @@ $(document).ready(function () {
     }
   };
 
+  if (window.location.href.includes("covid-india.mox") ) {
+    document.getElementById("language-box").value = "hindi";
+  } else {
+    if (window.location.protocol === "https:") {
+      var currentSubDomain = window.location.hostname.replace("covid-india.in", "");
+      scriptQuery = currentSubDomain.split(".")[0];
+    } else if (window.location.protocol === "file:") {
+      scriptQuery = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1).replace(".html", "");
+      if (scriptQuery === "index") {
+        scriptQuery = "";
+      }
+    }
+  }
+
   $.ajax({
-    url: "https://script.google.com/macros/s/AKfycby7AOxVGZUKTBUgTtPO5TGnudMAEUx9IdXeWE1rjgwjeIDGhcc/exec",
+    url: "https://script.google.com/macros/s/AKfycby7AOxVGZUKTBUgTtPO5TGnudMAEUx9IdXeWE1rjgwjeIDGhcc/exec?sheet=" + scriptQuery,
     type: "GET",
     dataType: "json"
   })
