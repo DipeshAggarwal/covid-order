@@ -45,12 +45,19 @@ $(document).ready(function () {
     if (window.location.protocol === "https:") {
       var currentSubDomain = window.location.hostname.replace("covid-india.in", "");
       scriptQuery = currentSubDomain.split(".")[0];
-    } else if (window.location.protocol === "file:") {
-      scriptQuery = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1).replace(".html", "");
-      if (scriptQuery === "index") {
-        scriptQuery = "";
-      }
     }
+
+    if (scriptQuery === "") {
+      if (window.location.protocol === "file:") {
+        scriptQuery = window.location.pathname.substring(window.location.pathname.lastIndexOf('/')+1).replace(".html", "");
+      }
+    } else if (window.location.pathname != "/") {
+      scriptQuery = window.location.pathname.substring(1).split(".")[0];
+    }
+  }
+  
+  if (scriptQuery === "index") {
+    scriptQuery = "";
   }
 
   $.ajax({
