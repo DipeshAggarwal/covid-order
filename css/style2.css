@@ -149,11 +149,51 @@
   text-decoration: none!important;
 }
 
-.prentend-link {
+.pretend-link {
   color: #007bff;
   cursor: pointer;
 }
 
-.prentend-link:hover {
+.pretend-link:hover {
   text-decoration: underline;
+}
+
+@media (max-width: 765px) {
+  .day {
+    width: 40px;
+    height: 40px;
+  }
+
+  .row {
+    margin-left: -5px;
+  }
+
+  .shift-down {
+    margin: auto!important;
+    margin-top: 10px!important;
+  }
+
+  .about-text {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    text-align: justify;
+  }
+
+  .display-2, .display-3 {
+    font-size: 3em;
+  }
+
+  #orderTable_info {
+    position: static;
+    right: 0;
+  }
+
+  #orderTable_paginate {
+    margin-top: 0;
+  }
+
+  .dataTables_length {
+    position: static;
+  }
 }
