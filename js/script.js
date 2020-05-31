@@ -15,11 +15,20 @@ $(document).ready(function () {
     clearBtn: true
   });
 
-  $('select#language-box').on('change', function (e) {
+  /*$('select#language-box').on('change', function (e) {
     if ($(this).find(":selected").val() === "english") {
       top.window.location = "https://www.covid-india.in/";
     } else {
       top.window.location = "https://www.covid-india.in/translate.html#" + $(this).find(":selected").val();
+      /*window.location = "https://www.covid-india.in/translate.html?" + $(this).find(":selected").val();
+    }
+  });*/
+
+  $('.lang-item').on('click', function(e) {
+    if ($(this).val() === "english") {
+      top.window.location = "https://www.covid-india.in/";
+    } else {
+      top.window.location = "https://www.covid-india.in/translate.html#" + $(this).val();
       /*window.location = "https://www.covid-india.in/translate.html?" + $(this).find(":selected").val();*/
     }
   });
@@ -85,7 +94,7 @@ $(document).ready(function () {
             var month = date.getMonth() + 1;
             entry[2] = ("0" + date.getDate()).slice(-2) + "/" + ("0" + month).slice(-2) + "/" + date.getUTCFullYear();
         }
-        
+
         var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[0] + "&" + queryArray[2] + "=" + entry[1].replace("Latest order, ", "").replace("Latest order, ", "") + "&" + queryArray[3] + "=" + entry[2] + "&" + queryArray[4] + "=" + entry[3] + "&expand").replace(/ /g, "%20");
         return entry.push('<div class="pretend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>');
       });
@@ -122,7 +131,7 @@ $(document).ready(function () {
         })
       } else {
         var columnObj = [];
-        var columnDefs = []; 
+        var columnDefs = [];
       }
 
       // Here we separate the data column wise to feed to DataTable
@@ -446,7 +455,7 @@ function copyToClipboard(obj) {
   el.select();
   document.execCommand('copy');
   document.body.removeChild(el);
-  
+
   // Fade in and fade out the copied text notification
   var ele = obj.lastChild;
   $(ele).fadeIn();
@@ -480,7 +489,7 @@ function prepareForCSV() {
 
     text = rowData[i].innerText.replace(/^[ ]+|[ ]+$/g, '');
     if (text.includes(",") || text.includes(";")) {
-      rowDataCSV.push(text.replace(/\n/g, ' ; ').replace(/(.*)/g, '\"$1\"').replace('"""', '"')); 
+      rowDataCSV.push(text.replace(/\n/g, ' ; ').replace(/(.*)/g, '\"$1\"').replace('"""', '"'));
     } else {
       rowDataCSV.push(text);
     }
@@ -530,7 +539,7 @@ function readyForPrinting() {
     }
     colIndex++;
   };
-  
+
   // Add "not-print" class to main container
   // This is to ensure that when print of the entire page is taken
   // it does not come up as blank.
