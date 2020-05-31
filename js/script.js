@@ -362,7 +362,7 @@ $(document).ready(function () {
           if ($(this).find(":selected").text() === "Show All Orders") {
             table.column(5).search("").draw();
           } else if ($(this).find(":selected").text() === "Only Court Orders") {
-            table.column(5).search("yes").draw();
+            table.column(5).search("Court").draw();
           }
         });
 
@@ -440,7 +440,7 @@ $(document).ready(function () {
 // Add event listener for opening and closing details
 $('#orderData').on('click', 'td.details-control', function () {
   var tr = $(this).closest('tr');
-  var row = table.row( tr );
+  var row = table.row(tr);
 
   if ( row.child.isShown() ) {
     // This row is already open - close it
