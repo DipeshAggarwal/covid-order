@@ -1,0 +1,159 @@
+.pdf-link {
+  color: #007bff!important;
+  cursor: pointer;
+  width: 80%;
+}
+
+.pdf-link:hover {
+  color: #0068d8;
+  text-decoration: underline;
+}
+
+.dataTables_info {
+  white-space: normal!important;
+}
+
+#orderTable_info {
+  position: absolute;
+  right: 10px;
+  margin-top: -10px!important;
+}
+
+#orderTable_paginate {
+  margin-top: 50px;
+}
+.pagination {
+  margin: auto;
+  text-align: center;
+}
+
+.dataTables_length {
+  position: absolute;
+}
+
+#orderTable td.far {
+  cursor: pointer;
+}
+
+#print-container {
+  display: none;
+}
+
+@media print {
+  body {
+    background-color: #ffffff;
+  }
+  .not-print, select, .dataTables_filter {
+    display: none!important;
+  }
+
+  .print-this {
+    display: block!important;
+  }
+
+  .print-text {
+    color: black;
+  }
+
+  .dataTables_length {
+    display: hidden;
+  }
+
+  .disabled {
+    background-color: white!important;
+  }
+
+  #orderTable_info {
+    color: black;
+  }
+
+  h1 {
+    color: black;
+  }
+
+  table {
+    page-break-inside: auto;
+  }
+
+  tr {
+    page-break-inside: auto;
+    page-break-after: avoid;
+  }
+
+  td {
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+    text-align: left;
+    color: black!important;
+  }
+}
+
+.avatar-circle {
+  width: 60px;
+  height: 60px;
+  background-color: var(--accent-color);
+  text-align: center;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  float: left;
+  margin-right: 1.5vw;
+  margin-bottom: 3vh;
+  vertical-align: middle;
+}
+
+.initials {
+  position: relative;
+  top: 15px;
+  font-size: 30px;
+  line-height: 30px;
+  color: #2c2c2c;
+  font-family: "Courier New", monospace;
+  font-weight: bold;
+}
+
+.about-button {
+  position: absolute!important;
+  bottom: 10px!important;
+  right: 10px!important;
+}
+
+.card {
+  border: 0;
+  border-bottom: 2px solid var(--accent-color);
+}
+
+.day {
+  width: 47px!important;
+  height: 47px!important;
+}
+
+.disabled {
+  border-radius: 0px!important;
+}
+
+.copied-text {
+  background-color: var(--accent-color);
+  color: #121212;
+  text-decoration: none;
+  font-weight: 800;
+  display: none;
+  margin: 0px;
+  margin-left:10px;
+  padding: 0em;
+  padding-left: 0.15em;
+  padding-right: 0.15em;
+}
+
+.copied-text:hover {
+  text-decoration: none!important;
+}
+
+.prentend-link {
+  color: #007bff;
+  cursor: pointer;
+}
+
+.prentend-link:hover {
+  text-decoration: underline;
+}

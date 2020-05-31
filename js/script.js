@@ -102,7 +102,7 @@ $(document).ready(function () {
         }];
         // This is the first column which has the expand button
         columnDefs.push({
-          className: 'control new-summary',
+          className: 'far fa-plus-square',
           orderable: false,
           targets: 0
         });
@@ -267,16 +267,6 @@ $(document).ready(function () {
                 this.text("Expand All Summaries");
               }
             }
-          },
-          {
-            text: '<i class="fa fa-train" aria-hidden="true"></i> <b>Migrants Travel Info</b>',
-            className: "shift-down not-print",
-            attr: {
-              style: "margin-bottom:-40px;margin-left:25px;"
-            },
-            action: function ( e, dt, node, config ) {
-              window.location.href = "https://migrants.covid-india.in";
-            }
           }
         ],
         "data": sheetData,
@@ -361,9 +351,9 @@ $(document).ready(function () {
 
         $('select#latest-box').on('change', function (e) {
           if ($(this).find(":selected").text() === "Show All Orders") {
-            table.column(25).search("").draw();
-          } else if ($(this).find(":selected").text() === "Only Latest Orders") {
-            table.column(25).search("yes").draw();
+            table.column(5).search("").draw();
+          } else if ($(this).find(":selected").text() === "Only Court Orders") {
+            table.column(5).search("yes").draw();
           }
         });
 
