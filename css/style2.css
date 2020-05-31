@@ -1,3 +1,21 @@
+td.details-control {
+  background: url('../details_open.png') no-repeat center center;
+  cursor: pointer;
+}
+
+tr.shown td.details-control {
+  background: url('../details_close.png') no-repeat center center;
+  cursor: pointer;
+}
+
+.stick-to-bottom {
+  position: absolute;
+  width: 100vw;
+  bottom: 0px;
+  margin: auto;
+  text-align: center;
+}
+
 .pdf-link {
   color: #007bff!important;
   cursor: pointer;

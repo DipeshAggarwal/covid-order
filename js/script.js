@@ -106,14 +106,14 @@ $(document).ready(function () {
           "defaultContent": ''
         }];
         var columnDefs = [{
-          "width": "5%",
-          "targets": 0
         }];
         // This is the first column which has the expand button
         columnDefs.push({
-          className: 'far fa-plus-square',
+          className: 'details-control',
           orderable: false,
-          targets: 0
+          targets: 0,
+          width: "5%",
+          defaultContent: ''
         });
 
         // Hide Latest Order column in the sheet
@@ -436,6 +436,23 @@ $(document).ready(function () {
       $("#printed-from").html('Printed from <a href="">' + window.location.protocol + "//" + window.location.hostname + '</a>');
     })
 });
+
+// Add event listener for opening and closing details
+$('#orderData').on('click', 'td.details-control', function () {
+  var tr = $(this).closest('tr');
+  var row = table.row( tr );
+
+  if ( row.child.isShown() ) {
+    // This row is already open - close it
+    row.child.hide();
+    tr.removeClass('shown');
+  }
+  else {
+    // Open this row
+    row.child( format(row.data()) ).show();
+    tr.addClass('shown');
+  }
+} );
 
 // A fallback in case the browser does not fire print events at the right time
 var printSetupDone = false;
