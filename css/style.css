@@ -435,11 +435,11 @@ select:hover {
   text-decoration: none!important;
 }
 
-.prentend-link {
+.pretend-link {
   color: #007bff;
   cursor: pointer;
 }
 
-.prentend-link:hover {
+.pretend-link:hover {
   text-decoration: underline;
 }

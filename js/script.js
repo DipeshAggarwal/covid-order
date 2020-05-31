@@ -87,7 +87,7 @@ $(document).ready(function () {
         }
         
         var link = (window.location.protocol + "//" + window.location.hostname + "/?" + queryArray[1] + "=" + entry[0] + "&" + queryArray[2] + "=" + entry[1].replace("Latest order, ", "").replace("Latest order, ", "") + "&" + queryArray[3] + "=" + entry[2] + "&" + queryArray[4] + "=" + entry[3] + "&expand").replace(/ /g, "%20");
-        return entry.push('<div class="prentend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>');
+        return entry.push('<div class="pretend-link" data-value=' + link + ' onClick="copyToClipboard(this)"><span class="fa fa-copy">&nbsp;&nbsp;</span>Copy link to this Summary<span class="alert alert-success copied-text">COPIED</span></div>');
       });
 
       if (customField === true) {
@@ -361,9 +361,9 @@ $(document).ready(function () {
 
         $('select#latest-box').on('change', function (e) {
           if ($(this).find(":selected").text() === "Show All Orders") {
-            table.column(25).search("").draw();
-          } else if ($(this).find(":selected").text() === "Only Latest Orders") {
-            table.column(25).search("yes").draw();
+            table.column(5).search("").draw();
+          } else if ($(this).find(":selected").text() === "Only Court Orders") {
+            table.column(5).search("Court").draw();
           }
         });
 
