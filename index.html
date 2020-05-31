@@ -48,7 +48,7 @@
               <a class="nav-link dropdown-toggle text-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About</a>
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="about-us.html">Who are we?</a>
-                <a class="dropdown-item" href="#">Get in touch</a>
+                <a class="dropdown-item" data-toggle="modal" data-target="#contactModal">Get in touch</a>
                 <a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with us</a>
               </div>
             </li>
@@ -165,9 +165,13 @@
               <a class="btn btn-primary print-text" href="./about-us.html" target="_blank">About Us</a>
               <a class="btn btn-primary print-text" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with Us</a>
               <a class="btn btn-primary print-text" data-toggle="collapse" href="#disclaimer" role="button" aria-expanded="false" aria-controls="disclaimer" onClick='$("html, body").animate({ scrollTop: $(document).height() }, "slow");'>Disclaimer</a-->
-              <button class="btn btn-dark mx-auto d-block" style="width:120px" data-toggle="modal" data-target="#claimModal"><i class="fa fa-exclamation-circle"></i> Disclaimer</button>
 
-              <div class="mt-3">Translations powered by <a href="https://moxveda.com">https://moxveda.com</a></div>
+              <div class="btn-group">
+                <button class="btn btn-primary mx-auto d-block" style="width:120px" data-toggle="modal" data-target="#contactModal"><i class="fa fa-envelope"></i> Get in Touch</button>
+                <button class="btn btn-dark mx-auto d-block" style="width:120px" data-toggle="modal" data-target="#claimModal"><i class="fa fa-exclamation-circle"></i> Disclaimer</button>
+              </div>
+
+              <p class="mt-3">Translations powered by <a href="https://moxveda.com">https://moxveda.com</a></p>
             </div>
 
             <div class="collapse" id="contact">
@@ -212,6 +216,31 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">I understand</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Modal -->
+  <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Disclaimer</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>While utmost care has been taken while uploading the orders/circulars/notifications/notices as issued by the various State and Central Govt.’s from time to time in relation to COVID-19, however, we are extremely sorry for any discrepancy found therein. If you find any discrepancy, issue, wish to report any anomaly, or send any additional information that may be added here, kindly send the information, suggestions and grievances to <a href="mailto:covidindiaordertracker@gmail.com" target="_top">covidindiaordertracker@gmail.com</a>.</p>
+
+          <p>Or contact us on twitter at: <a href="https://twitter.com/COVIDIndiaTrack/" target="_blank">@COVIDIndiaTrack</a><br />
+          <a href="https://twitter.com/jeevika_shiv/" target="_blank">Jeevika Shiv (@jeevika_shiv)</a> | <a href="https://twitter.com/AninditaAdhik13/" target="_blank">Anindita Adhikari (@AninditaAdhik13)</a> | <a href="https://twitter.com/ity_adi" target="_blank">Aditya Shrivastava (@ity_adi)</a></p>
+
+          <p>This website is developed and maintained by <a href="https://github.com/DipeshAggarwal" target="_blank">Dipesh Aggarwal</a> (<a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a>) and <a href="https://github.com/guneetnarula" target="_blank">Guneet Narula</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
