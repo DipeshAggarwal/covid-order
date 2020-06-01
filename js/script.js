@@ -1,5 +1,6 @@
 $(document).ready(function () {
   document.getElementById("footer-bottom").classList.add("stick-to-bottom");
+  $("#main-container > div.container").hide();
 
   // This block of code ensures that endusers can search for orders until the current day
   // TODO: Add some sort of freeze in the future so that when the website it accessed years later,
@@ -432,6 +433,7 @@ $(document).ready(function () {
       }
 
       $("#loader").hide();
+      $("#main-container > div.container").show();
       document.getElementById("footer-bottom").classList.remove("stick-to-bottom");
       $("#printed-from").html('Printed from <a href="">' + window.location.protocol + "//" + window.location.hostname + '</a>');
     })
