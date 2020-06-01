@@ -14,7 +14,6 @@
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NCCGLW8');</script>
 
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style2.css">
     <link rel="stylesheet" type="text/css" href="css/theme.min.css">
 
@@ -33,10 +32,10 @@
             for (var i=0; i<sheetData.length; i++) {
               var initial = sheetData[i]["Name"].match(/\b(\w)/g).join('')
               var twitterLink = "https://twitter.com/" + sheetData[i]["Twitter"]
-              var fragmentOne = '<div class="card w-100"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text" style="margin-bottom:23px;">'+ sheetData[i]["Description"];
+              var fragmentOne = '<div class="card w-100"><div class="card-body clearfix"><div class="avatar-circle bg-success"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text" style="margin-bottom:23px;">'+ sheetData[i]["Description"];
 
               if (sheetData[i]["Twitter"]) {
-                var fragmentSecond = '</p><a href="' + twitterLink + '" target="_blank" class="btn btn-outline-primary about-button fa fa-twitter"> ' + sheetData[i]["Twitter"] + '</a>';
+                var fragmentSecond = '</p><a href="' + twitterLink + '" target="_blank" class="btn btn-info float-right"><span class="fa fa-twitter"></span> ' + sheetData[i]["Twitter"] + '</a>';
                 } else {
                   var fragmentSecond = '</p></div></div>';
                 }
@@ -70,7 +69,7 @@
               <div class="dropdown-menu">
                 <a class="dropdown-item" href="about-us.html">Who are we?</a>
                 <a class="dropdown-item" data-toggle="modal" data-target="#contactModal">Get in touch</a>
-                <a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with us</a>
+                <a class="dropdown-item" href="https://docs.google.com/forms/d/e/1FAIpQLSfbJIjmhYh8aOiNNXtSEV6Bb6xvFUWRKsXHGKhWrH8PEsPRxw/viewform" target="_blank">Volunteer with us <span class="fa fa-external-link smaller"></span></a>
               </div>
             </li>
             <li><a class="nav-link text-light" href="index.html">Back to home</a></li>
@@ -96,17 +95,17 @@
     <div id="hide-until-load" class="container">
 
 
-      <div class="about-text lead blockquote">
+      <div class="text-justify lead blockquote mb-5">
         <p>The central government, state governments and courts responded to the fallout effect of this lockdown by announcing different social security measures to cushion its impact on the population, particularly focusing on the most vulnerable, poor, migrants, under-trials etc.</p><p>
         Our objective has been to make these orders available with a user friendly interface and summaries. We hope that the information will be useful for the public at large, civil society organisations, journalists, activists, social movements and researchers to ensure that these measures are accessible to those in need and to track implementation to hold respective governments accountable.</p><p>
         We hope that the information will be useful for the public at large, government officials , public representatives, civil society organisations, journalists, activists, social movements and researchers to ensure that these measures are accessible to those in need and to track implementation to hold respective governments accountable.
         </p>
       </div>
 
-      <hr class="about-text" style="background-color:#e1e1e1" />
+      <hr class="my-3" style="background-color:#e1e1e1" />
       <div class="row">
-        <div class="col">
-          <h1 class="display-5" style="margin:auto;text-align:center;padding-bottom:20px;">Contributors</h1>
+        <div class="col my-5">
+          <h1 class="display-5 text-center">Contributors</h1>
         </div>
       </div>
       <div id="about-grid" class="row about-text"></div>
@@ -190,7 +189,7 @@
           <p>Or contact us on twitter at: <a href="https://twitter.com/COVIDIndiaTrack/" target="_blank">@COVIDIndiaTrack</a><br />
           <a href="https://twitter.com/jeevika_shiv/" target="_blank">Jeevika Shiv (@jeevika_shiv)</a> | <a href="https://twitter.com/AninditaAdhik13/" target="_blank">Anindita Adhikari (@AninditaAdhik13)</a> | <a href="https://twitter.com/ity_adi" target="_blank">Aditya Shrivastava (@ity_adi)</a></p>
 
-          <p>This website is developed and maintained by <a href="https://github.com/DipeshAggarwal" target="_blank">Dipesh Aggarwal</a> (<a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a>) and <a href="https://github.com/guneetnarula" target="_blank">Guneet Narula</a></p>
+          <p>This website is developed and maintained by <a href="https://github.com/DipeshAggarwal" target="_blank">Dipesh Aggarwal</a> (<a href="mailto:discuss@ignore.@.com" onmouseover="this.href=this.href.replace('ignore.@','dipeshaggarwal')" >E-Mail Me</a>) with contributions from <a href="https://github.com/guneetnarula" target="_blank">Guneet Narula</a></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>

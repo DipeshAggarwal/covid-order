@@ -35,6 +35,7 @@ tr.shown td.details-control {
   position: absolute;
   right: 10px;
   margin-top: -10px!important;
+  margin-bottom:20px;
 }
 
 #orderTable_paginate {
@@ -49,8 +50,16 @@ tr.shown td.details-control {
   position: absolute;
 }
 
-#orderTable td.far {
-  cursor: pointer;
+.custom-select, .form-control {
+  margin-bottom: 10px;
+}
+.container {
+  padding-left: 5px !important;
+}
+
+.smaller {
+  font-size: 75%;
+  color:#bbb;
 }
 
 #print-container {
@@ -109,7 +118,6 @@ tr.shown td.details-control {
 .avatar-circle {
   width: 60px;
   height: 60px;
-  background-color: var(--accent-color);
   text-align: center;
   border-radius: 50%;
   -webkit-border-radius: 50%;
