@@ -382,14 +382,42 @@ $(document).ready(function () {
       }
 
       $('#show-all-btn').on('click', function (e) {
-          document.getElementById("state-box").value = "";
-          document.getElementById("issue-box").value = "";
-          document.getElementById("date-box").value = "";
-          table.column(1).search("").draw();
+        document.getElementById("state-box").value = "";
+        document.getElementById("issue-box").value = "";
+        document.getElementById("date-box").value = "";
+        table.column(1).search("").draw();
+        table.column(2).search("").draw();
+        table.column(3).search("").draw();
+        table.column(4).search("").draw();
+        $(this).hide();
+      });
+
+      $('#court-btn').on('click', function (e) {
+        if ($("#court-btn").hasClass("court-showing")) {
+          $("#court-btn").removeClass("court-showing");
+          table.column(5).search("").draw();
+          return;
+        } else if ($("#court-btn").hasClass("health-showing")) {
+          $("#court-btn").removeClass("health-showing");
           table.column(2).search("").draw();
-          table.column(3).search("").draw();
-          table.column(4).search("").draw();
-          $(this).hide();
+        }
+        
+        $("#court-btn").addClass("court-showing");
+        table.column(5).search("Court").draw();
+      });
+
+      $('#health-btn').on('click', function (e) {
+        if ($("#health-btn").hasClass("health-showing")) {
+          $("#health-btn").removeClass("health-showing");
+          table.column(2).search("").draw();
+          return;
+        } else if ($("#health-btn").hasClass("court-showing")) {
+          $("#health-btn").removeClass("court-showing");
+          table.column(5).search("").draw();
+        }
+        
+        $("#health-btn").addClass("health-showing");
+        table.column(2).search("Health").draw();
       });
 
       var showAllButtonCounter = 0;

@@ -69,6 +69,20 @@ select:hover {
   color: #000000;
 }
 
+#health-btn, #court-btn {
+  min-width: 340px;
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+  padding: 0;
+  margin: auto;
+  display: block;
+}
+
+.court-showing, .health-showing {
+  filter: brightness(85%);
+}
+
 #firstRow, .active {
   background-color: var(--accent-color)!important;
 }
@@ -128,6 +142,7 @@ select:hover {
 #orderTable_paginate {
   margin-top: 50px;
 }
+
 .pagination {
   margin: auto;
   text-align: center;
@@ -197,6 +212,14 @@ select:hover {
     font-weight: 500;
     min-width: 280px;
     max-width: 280px;
+    margin-bottom: 10px;
+  }
+
+  #health-btn, #court-btn {
+    min-width: 280px;
+    max-width: 280px;
+    font-size: 20px;
+    font-weight: 500;
     margin-bottom: 10px;
   }
 
