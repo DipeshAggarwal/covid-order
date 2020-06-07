@@ -283,7 +283,8 @@ $(document).ready(function () {
         "aoColumns": columnObj,
         "aoColumnDefs": columnDefs,
         "order": [
-          [0, null]
+          [0, null],
+          [3, "desc"]
         ],
         "breakpoints": [{
             name: 'bigdesktop',
