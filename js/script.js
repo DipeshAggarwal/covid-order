@@ -129,16 +129,21 @@ $(document).ready(function () {
           targets: 0
         });
 
-        // Hide Latest Order column in the sheet
-        columnDefs.push({
-          targets: 25,
-          searchable: true,
-          visible: false
-        })
-
         // Hide Order Allocation column in the sheet
         columnDefs.push({
           targets: 26,
+          searchable: false,
+          visible: false
+        })
+
+        columnDefs.push({
+          targets: 28,
+          searchable: false,
+          visible: false
+        })
+
+        columnDefs.push({
+          targets: 29,
           searchable: false,
           visible: false
         })
@@ -239,7 +244,7 @@ $(document).ready(function () {
               var data = $.map(columns, function (col, i) {
                 // We customise how we want to show the data when the plus sign is clicked
                 if (col.hidden && col.data) {
-                  if (col.data.startsWith("http") && col.title != "Copy Link to Summary") {
+                  if (typeof(col.data) === "string" && col.data.startsWith("http") && col.title != "Copy Link to Summary") {
                     return '<tr data-dt-row="' + col.rowIndex + '" data-dt-column="' + col.columnIndex + '">' +
                       '<td>' + col.title + '</td> ' +
                       '<td class="pdf-link" onClick=window.open("' + col.data + '")><span class="fa fa-external-link">&nbsp;&nbsp;</span>Click to view Order</td>' +
@@ -372,6 +377,7 @@ $(document).ready(function () {
           } else {
             table.column(1).search($(this).find(":selected").val()).draw();
           }
+          table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
         });
 
         $('select#issue-box').on('change', function (e) {
@@ -380,6 +386,7 @@ $(document).ready(function () {
           } else {
             table.column(2).search($(this).find(":selected").val()).draw();
           }
+          table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
         });
 
         $('select#latest-box').on('change', function (e) {
@@ -388,6 +395,7 @@ $(document).ready(function () {
           } else if ($(this).find(":selected").text() === "Only Court Orders") {
             table.column(5).search("Court").draw();
           }
+          table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
         });
 
         /**$('select#colour-box').on('change', function (e) {
@@ -401,6 +409,7 @@ $(document).ready(function () {
           } else {
             table.column(3).search($(this).val()).draw();
           }
+          table.rows('.parent').nodes().to$().find('td:first-child').trigger('click');
         });
       }
 
