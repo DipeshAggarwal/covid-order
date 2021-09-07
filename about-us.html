@@ -17,24 +17,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/tabletop@1.6.2/src/tabletop.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.20/b-1.6.1/fh-3.1.6/r-2.2.3/datatables.min.js"></script>
     <script>
       $(document).ready(function() {
         $("#hide-until-load").hide()
-        Tabletop.init({
-          key: "1uOv6eNYW1Ope4rCVD0vIp1Nuq6XSWa-TaHRQedUle34"
+        $.ajax({
+          url: "https://script.google.com/macros/s/AKfycbxGFSSXOyLcDmtgF_qbK-D5Cyl2XynK-tJLEY9DF_k1Dk-Bu8o0mwdXmi8LUpTTXD0v/exec",
+          type: "GET",
+          dataType: "json"
         })
-          .then(function(data, tabletop) {
-            var sheetData = data["Sheet1"].elements;
+          .done(function( data ) {
+            data = data.websiteData;
+            columnNames = data.shift();
+            sheetData = data;
               
             for (var i=0; i<sheetData.length; i++) {
-              var initial = sheetData[i]["Name"].match(/\b(\w)/g).join('')
-              var twitterLink = "https://twitter.com/" + sheetData[i]["Twitter"]
-              var fragmentOne = '<div class="card w-100"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i]["Name"] + '</h2><p class="card-text" style="margin-bottom:23px;">'+ sheetData[i]["Description"];
+              var initial = sheetData[i][0].match(/\b(\w)/g).join('')
+              var twitterLink = "https://twitter.com/" + sheetData[i][1]
+              var fragmentOne = '<div class="card w-100"><div class="card-body"><div class="avatar-circle"><span class="initials">' + initial + '</span></div><h4 class="card-title">' + sheetData[i][0] + '</h2><p class="card-text" style="margin-bottom:23px;">'+ sheetData[i][2];
 
-              if (sheetData[i]["Twitter"]) {
-                var fragmentSecond = '</p><a href="' + twitterLink + '" target="_blank" class="btn btn-outline-primary about-button fa fa-twitter"> ' + sheetData[i]["Twitter"] + '</a>';
+              if (sheetData[i][1]) {
+                var fragmentSecond = '</p><a href="' + twitterLink + '" target="_blank" class="btn btn-outline-primary about-button fa fa-twitter"> ' + sheetData[i][1] + '</a>';
                 } else {
                   var fragmentSecond = '</p></div></div>';
                 }
