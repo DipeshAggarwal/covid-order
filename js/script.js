@@ -39,9 +39,9 @@ $(document).ready(function () {
 
   $('select#language-box').on('change', function (e) {
     if ($(this).find(":selected").val() === "english") {
-      top.window.location = "https://www.covid-india.in/";
+      top.window.location = "https://covidorders.in/";
     } else {
-      top.window.location = "https://www.covid-india.in/translate.html#" + $(this).find(":selected").val();
+      top.window.location = "https://covidorders.in/translate.html#" + $(this).find(":selected").val();
       /*window.location = "https://www.covid-india.in/translate.html?" + $(this).find(":selected").val();*/
     }
   });
@@ -65,7 +65,7 @@ $(document).ready(function () {
     document.getElementById("language-box").value = "hindi";
   } else {
     if (window.location.protocol === "https:") {
-      var currentSubDomain = window.location.hostname.replace("covid-india.in", "");
+      var currentSubDomain = window.location.hostname.replace("covidorders.in", "");
       scriptQuery = currentSubDomain.split(".")[0];
     }
 
