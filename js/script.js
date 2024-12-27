@@ -302,7 +302,7 @@ $(document).ready(function () {
               style: "margin-bottom:-40px;margin-left:25px;"
             },
             action: function ( e, dt, node, config ) {
-              window.location.href = "https://migrants.covid-india.in";
+              window.location.href = "https://migrants.covidorders.in/";
             }
           }
         ],
